@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   end
 
   s.add_development_dependency 'capybara', '~> 2.4.4'
+  s.add_development_dependency 'bourbon', '>= 4', '< 5'
   s.add_development_dependency 'poltergeist', '~> 1.5'
   s.add_development_dependency 'rspec-rails', '~> 3.3.0'
   s.add_development_dependency 'simplecov', '~> 0.10.0'
