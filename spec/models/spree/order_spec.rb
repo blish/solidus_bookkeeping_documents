@@ -26,19 +26,17 @@ RSpec.describe Spree::Order do
     let(:order) { create :order_with_line_items, state: 'confirm' }
 
     before do
-      allow(order).to receive(:ensure_line_item_variants_are_not_deleted) { true }
-      allow(order).to receive(:ensure_line_items_are_in_stock) { true }
       order.payments = [create(:payment)]
     end
 
     it 'creates a new invoice when completing the order' do
       expect do
-        order.next
+        order.complete!
       end.to change { Spree::BookkeepingDocument.count }
     end
 
     it 'prevents #invoice_for_order from creating too many documents' do
-      order.next
+      order.complete!
       expect do
         order.invoice_for_order
       end.to_not change { Spree::BookkeepingDocument.count }

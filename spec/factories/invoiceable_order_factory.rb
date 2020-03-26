@@ -20,7 +20,7 @@ FactoryGirl.define do
 
       create(:shipment, order: order, cost: evaluator.shipment_cost)
       order.shipments.reload
-      order.next
+      order.complete!
     end
   end
 end
