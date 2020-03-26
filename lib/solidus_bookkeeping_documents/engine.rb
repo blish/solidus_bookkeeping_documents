@@ -1,12 +1,11 @@
-module SpreePrintInvoice
+module SolidusBookkeepingDocuments
   class Engine < Rails::Engine
-    require 'spree/core'
     isolate_namespace Spree
-    engine_name 'spree_print_invoice'
+    engine_name 'solidus_bookkeeping_documents'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
-    initializer 'spree.print_invoice.environment', before: :load_config_initializers do
+    initializer 'solidus_bookkeeping_documents.environment', before: :load_config_initializers do
       Spree::PrintInvoice::Config = Spree::PrintInvoiceSetting.new
     end
 

@@ -1,7 +1,4 @@
-# Spree Print Invoice
-
-[![Build Status](https://travis-ci.org/spree-contrib/spree_print_invoice.svg?branch=master)](https://travis-ci.org/spree-contrib/spree_print_invoice)
-[![Code Climate](https://codeclimate.com/github/spree-contrib/spree_print_invoice/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_print_invoice)
+# Solidus Bookkeeping Documents
 
 This extension provides a model `Spree::BookkeepingDocument`, which generates PDFs from any Spree Object with the help of View objects that translate between different object structures and PDF templates. It stores a "number" string as well as first name, last name, email, and amount with each document for convenient searching in the backend.
 
@@ -18,12 +15,12 @@ In the `Spree::Admin::OrdersController#edit` view, you'll find an additional but
 
 Add to your `Gemfile`
 ```ruby
-gem 'spree_print_invoice', github: 'spree-contrib/spree_print_invoice', branch: 'master'
+gem 'solidus_bookkeeping_documents', git: 'https://gitlab.com/blish/solidus_bookkeeping_documents', branch: 'master'
 ```
 
 Run
 ```
-bundle && exec rails g spree_print_invoice:install
+bundle && bin/rails g solidus_bookkeeping_documents:install
 ```
 
 Enjoy! Now you can generate invoices and packaging slips with sequential numbers from arbitrary Spree objects.
@@ -72,14 +69,14 @@ Enjoy! Now you can generate invoices and packaging slips with sequential numbers
 In order to customize the build in invoice and packaging slip templates you need to copy them into your app:
 
 ```sh
-$ bundle exec rails g spree_print_invoice:templates
+$ bundle exec rails g solidus_bookkeeping_documents:templates
 ```
 
 You can then customize them in the `app/views/spree/printables` directory.
 
 # Upgrading
 
-From previous versions of `spree_print_invoice`, the syntax and location of the `prawn` templates has changed. Please copy new templates using `rails g spree_print_invoice:templates` and adapt according to your needs.
+From previous versions of `solidus_bookkeeping_documents`, the syntax and location of the `prawn` templates has changed. Please copy new templates using `rails g solidus_bookkeeping_documents:templates` and adapt according to your needs.
 
 # Adding templates for another model
 
@@ -136,9 +133,9 @@ See corresponding [guidelines][1]
 
 ## License
 
-Copyright (c) 2011-2015 [Spree Commerce][2], and other [contributors][3], released under the [New BSD License][4]
+Copyright (c) 2020 [Blish][2], and other [contributors][3], released under the [New BSD License][4]
 
-[1]: https://github.com/spree-contrib/spree_print_invoice/blob/master/CONTRIBUTING.md
-[2]: https://github.com/spree
-[3]: https://github.com/spree-contrib/spree_print_invoice/contributors
-[4]: https://github.com/spree-contrib/spree_print_invoice/blob/master/LICENSE.md
+[1]: https://gitlab.com/blish/solidus_bookkeeping_documents/blob/master/CONTRIBUTING.md
+[2]: https://blish.cloud
+[3]: https://gitlab.com/blish/solidus_bookkeeping_documents/contributors
+[4]: https://gitlab.com/blish/solidus_bookkeeping_documents/blob/master/LICENSE.md

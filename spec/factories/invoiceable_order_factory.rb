@@ -12,7 +12,6 @@ FactoryGirl.define do
       line_items_count 1
       line_items_price 10
       shipment_cost 100
-      shipping_method_filter Spree::ShippingMethod::DISPLAY_ON_FRONT_END
     end
 
     after(:create) do |order, evaluator|

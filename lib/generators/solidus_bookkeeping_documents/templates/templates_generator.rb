@@ -1,4 +1,4 @@
-module SpreePrintInvoice
+module SolidusBookkeepingDocuments
   module Generators
     class TemplatesGenerator < Rails::Generators::Base
       source_root File.expand_path('../../../../../app/views/spree', __FILE__)
