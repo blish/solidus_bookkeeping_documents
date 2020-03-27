@@ -1,6 +1,9 @@
 ---
 en:
   spree:
+    admin:
+      tab:
+        print_invoice_settings: Print Invoice Settings
     print_invoice:
       documents: Documents
       documents_for_order: "Documents for order %{order_number}"

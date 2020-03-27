@@ -1,3 +1,5 @@
+require 'deface'
+
 module SolidusBookkeepingDocuments
   class Engine < Rails::Engine
     isolate_namespace Spree

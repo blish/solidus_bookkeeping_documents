@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_runtime_dependency 'prawn-rails', '~> 0.1.1'
+  s.add_runtime_dependency 'deface', '~> 1.0'
 
   '~> 1.4.2'.tap do |solidus_version|
     s.add_runtime_dependency 'solidus_core', solidus_version
