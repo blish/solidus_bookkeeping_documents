@@ -1,0 +1,25 @@
+image: "circleci/ruby:2.4-node-browsers-legacy"
+
+cache:
+  key:
+    files:
+      - Gemfile.lock
+  paths:
+    - vendor/bundle
+
+before_script:
+  - phantomjs -v
+  - ruby -v
+  - gem -v
+  - gem install bundler:1.17.3 --no-document
+  - bundle -v
+  - bundle check || bundle install -j $(nproc) --path vendor/bundle
+  - RAILS_ENV=test bundle exec rake test_app
+
+rspec:
+  script: bundle exec rspec
+  coverage: '/Code coverage: \d+\.\d+/'
+  artifacts:
+    paths:
+      - spec/dummy/tmp/capybara
+    when: on_failure
