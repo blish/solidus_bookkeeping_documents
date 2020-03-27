@@ -1,8 +1,4 @@
-# coding: utf-8
-lib = File.expand_path('../lib/', __FILE__)
-$LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
-
-require 'solidus_bookkeeping_documents/version'
+require_relative 'lib/solidus_bookkeeping_documents/version'
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
@@ -17,10 +13,8 @@ Gem::Specification.new do |s|
   s.homepage     = 'https://gitlab.com/blish/solidus_bookkeeping_documents'
   s.license      = 'BSD-3'
 
-  s.files        = `git ls-files`.split("\n")
-  s.test_files   = `git ls-files -- spec/*`.split("\n")
-  s.require_path = 'lib'
-  s.requirements << 'none'
+  s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec/|bin}) }
+  s.test_files = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^spec/}) }
 
   s.add_runtime_dependency 'prawn-rails', '~> 0.1.1'
   s.add_runtime_dependency 'deface', '~> 1.0'
