@@ -1,6 +1,10 @@
 ---
 de:
   spree:
+    admin:
+      tab:
+        documents: Dokumente
+        print_invoice_settings: Rechnungsdruck-Einstellungen
     print_invoice:
       document_type: Dokumentart
       number: Nummer
@@ -52,3 +56,11 @@ de:
       invoice_slip_legend: PDF-Inhaltseinstellungen
       invoice_number: 'Rechnungsnummer: %{number}'
       invoice_date: 'Rechnungsdatum: %{date}'
+  activerecord:
+    models:
+      spree/bookkeeping_document:
+        one: Dokument
+        other: Dokumente
+    attributes:
+      spree/bookkeeping_document:
+        created_at: Erstellt am

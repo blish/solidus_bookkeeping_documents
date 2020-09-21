@@ -1,0 +1,4 @@
+<ul id="sidebar-documents" class="admin-subnav">
+  <%= tab :invoices, url: spree.admin_bookkeeping_documents_path(q: { template_cont: 'invoice' }) %>
+  <%= tab :packaging_slips, url: spree.admin_bookkeeping_documents_path(q: { template_cont: 'packaging_slip' }) %>
+</ul>

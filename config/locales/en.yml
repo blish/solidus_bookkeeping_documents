@@ -3,6 +3,7 @@ en:
   spree:
     admin:
       tab:
+        documents: Documents
         print_invoice_settings: Print Invoice Settings
     print_invoice:
       documents: Documents
