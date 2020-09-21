@@ -11,6 +11,10 @@ module SolidusBookkeepingDocuments
       Spree::PrintInvoice::Config = Spree::PrintInvoiceSetting.new
     end
 
+    initializer 'solidus_bookkeeping_documents.settings_tab' do
+      Spree::BackendConfiguration::CONFIGURATION_TABS << :print_invoice_settings
+    end
+
     class << self
       def activate
         cache_klasses = %W(#{config.root}/app/**/*_decorator*.rb)
