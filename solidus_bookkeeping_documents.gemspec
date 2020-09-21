@@ -3,7 +3,7 @@ require_relative 'lib/solidus_bookkeeping_documents/version'
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'solidus_bookkeeping_documents'
-  s.version     = SolidusBookkeepingDocuments.version
+  s.version     = SolidusBookkeepingDocuments::VERSION
   s.summary     = 'Print invoices and packing slips from Solidus Orders'
   s.description = s.summary
   s.required_ruby_version = '~> 2.4.0'

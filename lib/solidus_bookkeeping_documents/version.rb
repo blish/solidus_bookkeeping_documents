@@ -1,18 +1,7 @@
 module SolidusBookkeepingDocuments
-  module_function
+  VERSION = "1.0.0"
 
-  # Returns the version of the currently loaded SolidusBookkeepingDocuments as a
-  # <tt>Gem::Version</tt>.
-  def version
-    Gem::Version.new VERSION::STRING
-  end
-
-  module VERSION
-    MAJOR = 1
-    MINOR = 0
-    TINY  = 0
-    PRE   = 'beta'
-
-    STRING = [MAJOR, MINOR, TINY, PRE].compact.join('.')
+  def self.version
+    VERSION
   end
 end
