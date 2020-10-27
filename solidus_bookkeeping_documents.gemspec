@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec/|bin}) }
   s.test_files = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^spec/}) }
 
-  s.add_runtime_dependency 'prawn-rails', '~> 0.1.1'
+  s.add_runtime_dependency 'prawn-rails', '~> 1.0'
   s.add_runtime_dependency 'deface', '~> 1.0'
 
   '~> 1.4.2'.tap do |solidus_version|
