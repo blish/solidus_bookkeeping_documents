@@ -20,6 +20,9 @@ require 'rspec/rails'
 require 'ffaker'
 require 'pry'
 
+require 'rails-controller-testing'
+Rails::Controller::Testing.install
+
 RSpec.configure do |config|
   config.mock_with :rspec
   config.use_transactional_fixtures = false

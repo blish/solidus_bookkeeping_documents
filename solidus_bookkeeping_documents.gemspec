@@ -42,4 +42,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'puma'
   s.add_development_dependency 'listen', '~> 3.1.5'
   s.add_development_dependency 'rake', '< 11.0'
+  s.add_development_dependency 'rails-controller-testing'
 end
