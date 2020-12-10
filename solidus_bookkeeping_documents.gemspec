@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version     = SolidusBookkeepingDocuments::VERSION
   s.summary     = 'Print invoices and packing slips from Solidus Orders'
   s.description = s.summary
-  s.required_ruby_version = '~> 2.4'
+  s.required_ruby_version = ['>= 2.4', '< 2.6']
 
   s.authors      = ['Thomas von Deyen', 'Martin Meyerhoff']
   s.email        = 'hello@blish.cloud'
@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'prawn-rails', '~> 1.0'
   s.add_runtime_dependency 'deface', '~> 1.0'
 
-  '~> 1.4.2'.tap do |solidus_version|
+  '~> 2.0.0'.tap do |solidus_version|
     s.add_runtime_dependency 'solidus_core', solidus_version
     s.add_runtime_dependency 'solidus_backend', solidus_version
   end
@@ -27,11 +27,11 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'capybara', '~> 2.4.4'
   s.add_development_dependency 'bourbon', '>= 4', '< 5'
   s.add_development_dependency 'poltergeist', '~> 1.5'
-  s.add_development_dependency 'rspec-rails', '~> 3.3.0'
+  s.add_development_dependency 'rspec-rails', '~> 3.3'
   s.add_development_dependency 'simplecov', '~> 0.10.0'
   s.add_development_dependency 'database_cleaner', '~> 1.4.0'
-  s.add_development_dependency 'coffee-rails', '~> 4.0.0'
-  s.add_development_dependency 'sass-rails', '~> 5.0.0'
+  s.add_development_dependency 'coffee-rails', '~> 4.1'
+  s.add_development_dependency 'sass-rails', '~> 5.0'
   s.add_development_dependency 'pdf-inspector', '~> 1.2.0'
   s.add_development_dependency 'ffaker', '>= 1.32.1'
   s.add_development_dependency 'guard-rspec', '>= 4.2.0'
@@ -42,4 +42,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'puma'
   s.add_development_dependency 'listen', '~> 3.1.5'
   s.add_development_dependency 'rake', '< 11.0'
+  s.add_development_dependency 'rails-controller-testing'
 end
