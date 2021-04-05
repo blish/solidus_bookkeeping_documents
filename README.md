@@ -15,7 +15,7 @@ In the `Spree::Admin::OrdersController#edit` view, you'll find an additional but
 
 Add to your `Gemfile`
 ```ruby
-gem 'solidus_bookkeeping_documents', git: 'https://gitlab.com/blish/solidus_bookkeeping_documents', branch: 'master'
+gem 'solidus_bookkeeping_documents', git: 'https://gitlab.com/blish/gems/solidus_bookkeeping_documents', branch: 'main'
 ```
 
 Run
@@ -135,7 +135,7 @@ See corresponding [guidelines][1]
 
 Copyright (c) 2020 [Blish][2], and other [contributors][3], released under the [New BSD License][4]
 
-[1]: https://gitlab.com/blish/solidus_bookkeeping_documents/blob/master/CONTRIBUTING.md
+[1]: https://gitlab.com/blish/gems/solidus_bookkeeping_documents/blob/main/CONTRIBUTING.md
 [2]: https://blish.cloud
-[3]: https://gitlab.com/blish/solidus_bookkeeping_documents/contributors
-[4]: https://gitlab.com/blish/solidus_bookkeeping_documents/blob/master/LICENSE.md
+[3]: https://gitlab.com/blish/gems/solidus_bookkeeping_documents/contributors
+[4]: https://gitlab.com/blish/gems/solidus_bookkeeping_documents/blob/main/LICENSE.md
