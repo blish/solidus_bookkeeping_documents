@@ -73,7 +73,7 @@
     </div>
   <% end %>
 
-  <%= paginate @bookkeeping_documents, scope: main_app, theme: "solidus_admin" %>
+  <%= paginate @bookkeeping_documents, scope: spree, theme: "solidus_admin" %>
 <% end %>
 
 <% if @bookkeeping_documents.any? %>
@@ -114,5 +114,5 @@
 <% end %>
 
 <% unless order_focused? %>
-  <%= paginate @bookkeeping_documents, scope: main_app, theme: "solidus_admin" %>
+  <%= paginate @bookkeeping_documents, scope: spree, theme: "solidus_admin" %>
 <% end %>
