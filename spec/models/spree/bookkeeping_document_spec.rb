@@ -33,10 +33,6 @@ RSpec.describe Spree::BookkeepingDocument do
   describe '#pdf' do
     subject { Spree::BookkeepingDocument.create(printable: printable, template: 'invoice') }
 
-    before do
-      allow(Spree::PrintInvoice::Config).to receive(:store_pdf) { false }
-    end
-
     context 'with an order' do
       let(:printable) { create :invoiceable_order }
 

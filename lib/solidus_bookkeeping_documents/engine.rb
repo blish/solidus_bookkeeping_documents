@@ -1,4 +1,5 @@
 require 'deface'
+require 'dragonfly'
 
 module SolidusBookkeepingDocuments
   class Engine < Rails::Engine

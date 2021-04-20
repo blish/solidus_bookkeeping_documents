@@ -72,29 +72,6 @@ RSpec.describe Spree::Order do
       end
     end
 
-    describe '#pdf_storage_path' do
-      context 'with no document of the specified type present' do
-        it 'raises ActiveRecord::RecordNotFound' do
-          expect do
-            order.pdf_storage_path('unknown_something')
-          end.to raise_error(ActiveRecord::RecordNotFound)
-        end
-      end
-
-      context 'with a document of the specified type present' do
-        let(:bookkeeping_documents) { [invoice] }
-        before do
-          allow(order).to receive(:bookkeeping_documents).and_return(bookkeeping_documents)
-          allow(bookkeeping_documents).to receive(:find_by!).and_return(invoice)
-        end
-
-        it 'calls #file_path on the invoice' do
-          expect(invoice).to receive(:file_path)
-          order.pdf_storage_path('invoice')
-        end
-      end
-    end
-
     describe 'destruction' do
       let!(:order) { create :invoiceable_order }
 
