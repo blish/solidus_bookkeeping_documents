@@ -13,8 +13,6 @@ module Spree
     preference :logo_scale,       :integer, default: 50
     preference :font_face,        :string,  default: 'Helvetica'
     preference :font_size,        :integer, default: 9
-    preference :store_pdf,        :boolean, default: false
-    preference :storage_path,     :string,  default: 'tmp/invoice_prints'
 
     preference :invoice_number_prefix,        :string,  default: 'I-'
     preference :packaging_slip_number_prefix, :string,  default: 'P-'

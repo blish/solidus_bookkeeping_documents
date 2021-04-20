@@ -53,17 +53,6 @@ Enjoy! Now you can generate invoices and packaging slips with sequential numbers
   Spree::PrintInvoice::Config.set(prawn_options: { page_layout: :landscape, page_size: 'A4', margin: [50, 100, 150, 200] })
   ```
 
-6. Enable PDF storage feature
-
-  PDF files can be stored to disk. This is very handy if you want to send these files as email attachment.
-
-  ```ruby
-  Spree::PrintInvoice::Config.set(store_pdf: true) # Default: false
-  Spree::PrintInvoice::Config.set(storage_path: 'pdfs/orders') # Default: tmp/order_prints
-  ```
-
-  Inside the `storage_path` a folder for each template will be created. Files will be saved with order number respectively invoice number as file name.
-
 ## Customize templates
 
 In order to customize the build in invoice and packaging slip templates you need to copy them into your app:
@@ -116,6 +105,24 @@ pdf.bounding_box [100, 600], width: 200 do
     pdf.line pdf.bounds.top_left,    pdf.bounds.top_right
     pdf.line pdf.bounds.bottom_left, pdf.bounds.bottom_right
   end
+end
+```
+
+## S3 Setup
+
+Configure a S3 datastore for Dragonfly
+
+```ruby
+# config/initializers/dragonfly
+
+require "dragonfly/s3_data_store"
+
+Dragonfly.app(:solidus_bookkeeping_documents).configure do
+  datastore :s3,
+    bucket_name: ENV.fetch("SOLIDUS_BOOKKEEPING_DOCUMENTS_S3_BUCKET_NAME"),
+    access_key_id: ENV.fetch("SOLIDUS_BOOKKEEPING_DOCUMENTS_S3_ACCESS_KEY_ID"),
+    secret_access_key: ENV.fetch("SOLIDUS_BOOKKEEPING_DOCUMENTS_S3_SECRET_ACCESS_KEY"),
+    region: ENV.fetch("SOLIDUS_BOOKKEEPING_DOCUMENTS_S3_REGION")
 end
 ```
 
