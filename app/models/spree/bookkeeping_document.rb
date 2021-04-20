@@ -1,5 +1,7 @@
 module Spree
   class BookkeepingDocument < ActiveRecord::Base
+    extend Dragonfly::Model
+
     PERSISTED_ATTRS = [
       :firstname,
       :lastname,
@@ -22,6 +24,8 @@ module Spree
     # Store next document number
     before_create :store_next_document_number
     before_create :persist_view_attributes
+
+    dragonfly_accessor :attachment, app: :solidus_bookkeeping_documents
 
     class << self
 
@@ -72,11 +76,7 @@ module Spree
     #   Spree::PrintInvoice::Config.store_pdf to false
     #
     def pdf
-      if Spree::PrintInvoice::Config.store_pdf
-        send_or_create_pdf
-      else
-        render_pdf
-      end
+      send_or_create_pdf
     end
 
     # = The PDF file_name
@@ -87,28 +87,11 @@ module Spree
 
     # = PDF file path
     #
-    def file_path
-      @_file_path ||= Rails.root.join(storage_path, "#{file_name}")
+    def file_url
+      return attachment.url unless attachment.app.datastore.class.name == "Dragonfly::S3DataStore"
+      attachment.remote_url
     end
-
-    # = PDF storage folder path for given template name
-    #
-    # Configure the storage path with +Spree::PrintInvoice::Config.storage_path+
-    #
-    # Each template type gets it own pluralized folder inside
-    # of +Spree::PrintInvoice::Config.storage_path+
-    #
-    # == Example:
-    #
-    #   storage_path('invoice') => "tmp/pdf_prints/invoices"
-    #
-    # Creates the folder if it's not present yet.
-    #
-    def storage_path
-      storage_path = Rails.root.join(Spree::PrintInvoice::Config.storage_path, template.pluralize)
-      FileUtils.mkdir_p(storage_path)
-      storage_path
-    end
+    alias_method :file_path, :file_url
 
     # Renders the prawn template for give template name in context of ActionView.
     #
@@ -190,11 +173,12 @@ module Spree
     # Renders and stores it if it's not yet present.
     #
     def send_or_create_pdf
-      unless File.exist?(file_path)
-        File.open(file_path, 'wb') { |f| f.puts render_pdf }
+      unless attachment_stored?
+        self.attachment = render_pdf
+        save
       end
 
-      IO.binread(file_path)
+      IO.binread(attachment.file)
     end
   end
 end
