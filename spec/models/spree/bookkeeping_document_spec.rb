@@ -1,10 +1,10 @@
 RSpec.describe Spree::BookkeepingDocument do
   let(:printable) { Spree::Order.new }
-  let(:template) { 'invoice' }
+  let(:template) { "invoice" }
 
-  subject { Spree::BookkeepingDocument.new(printable: printable, template: 'invoice') }
+  subject { Spree::BookkeepingDocument.new(printable: printable, template: "invoice") }
 
-  describe 'attributes' do
+  describe "attributes" do
     it { is_expected.to respond_to(:printable) }
     it { is_expected.to respond_to(:template) }
 
@@ -20,77 +20,77 @@ RSpec.describe Spree::BookkeepingDocument do
     it { is_expected.to respond_to(:total) }
   end
 
-  describe '#view' do
+  describe "#view" do
     it { is_expected.to respond_to(:view) }
 
-    context 'with an order as printable' do
-      it 'is an Spree::Printables::Order::InvoiceView'  do
+    context "with an order as printable" do
+      it "is an Spree::Printables::Order::InvoiceView" do
         expect(subject.view).to be_a(Spree::Printables::Order::InvoiceView)
       end
     end
   end
 
-  describe '#pdf' do
-    subject { Spree::BookkeepingDocument.create(printable: printable, template: 'invoice') }
+  describe "#pdf" do
+    subject { Spree::BookkeepingDocument.create(printable: printable, template: "invoice") }
 
-    context 'with an order' do
+    context "with an order" do
       let(:printable) { create :invoiceable_order }
 
-      it 'creates a PDF' do
+      it "creates a PDF" do
         expect(subject.pdf).to match(/%PDF-1.\d/)
       end
     end
   end
 
-  describe '#next_document_number' do
-    let(:address) { FactoryGirl.create(:address) }
+  describe "#next_document_number" do
+    let(:address) { FactoryBot.create(:address) }
 
     let(:printable) do
       Spree::Order.new(bill_address: address, ship_address: address)
     end
 
-    context 'if a document_number is present' do
+    context "if a document_number is present" do
       before do
         doc = Spree::BookkeepingDocument.create!(
           printable: printable,
-          template: 'invoice'
+          template: "invoice",
         )
         doc.update_column(:document_number, 41)
         subject.save!
       end
 
-      it 'returns the document_number incremented by one' do
+      it "returns the document_number incremented by one" do
         expect(subject.document_number).to eq(42)
       end
     end
 
-    context 'if a document_number_prefix is present' do
+    context "if a document_number_prefix is present" do
       before do
         doc = Spree::BookkeepingDocument.create!(
           printable: printable,
-          template: 'invoice'
+          template: "invoice",
         )
-        doc.update_columns(document_number: 411, document_number_prefix: 'I-')
+        doc.update_columns(document_number: 411, document_number_prefix: "I-")
         doc = Spree::BookkeepingDocument.create!(
           printable: printable,
-          template: 'packaging_slip'
+          template: "packaging_slip",
         )
-        doc.update_columns(document_number: 412, document_number_prefix: 'P-')
+        doc.update_columns(document_number: 412, document_number_prefix: "P-")
         subject.save!
       end
 
-      it 'returns the document_number incremented by one' do
+      it "returns the document_number incremented by one" do
         expect(subject.document_number).to eq(412)
         expect(subject.document_number).to_not eq(413)
       end
     end
 
-    context 'if document_number is nil' do
+    context "if document_number is nil" do
       subject(:document) do
         Spree::BookkeepingDocument.create!(
           printable: printable,
-          template: 'invoice',
-          document_number: nil
+          template: "invoice",
+          document_number: nil,
         )
       end
 
@@ -99,7 +99,7 @@ RSpec.describe Spree::BookkeepingDocument do
           allow(Spree::PrintInvoice::Config).to receive(:next_number) { 11 }
         end
 
-        it 'returns the next number from settings' do
+        it "returns the next number from settings" do
           expect(document.document_number).to eq(11)
         end
       end
@@ -109,15 +109,15 @@ RSpec.describe Spree::BookkeepingDocument do
           allow(Spree::PrintInvoice::Config).to receive(:next_number) { nil }
         end
 
-        it 'returns 1' do
+        it "returns 1" do
           expect(document.document_number).to eq(1)
         end
       end
     end
   end
 
-  describe '#formatted_number' do
-    let(:address) { FactoryGirl.create(:address) }
+  describe "#formatted_number" do
+    let(:address) { FactoryBot.create(:address) }
 
     let(:printable) do
       Spree::Order.new(bill_address: address, ship_address: address)
@@ -126,17 +126,17 @@ RSpec.describe Spree::BookkeepingDocument do
     subject(:document) do
       Spree::BookkeepingDocument.create!(
         printable: printable,
-        template: 'invoice',
-        document_number: nil
+        template: "invoice",
+        document_number: nil,
       )
     end
 
     before do
       allow(Spree::PrintInvoice::Config).to receive(:next_number) { 77 }
-      allow(Spree::PrintInvoice::Config).to receive(:invoice_number_prefix) { 'INVOICE' }
+      allow(Spree::PrintInvoice::Config).to receive(:invoice_number_prefix) { "INVOICE" }
     end
 
-    context 'when using a NumberFormatter' do
+    context "when using a NumberFormatter" do
       before do
         class Spree::PrintInvoice::NumberFormatter
           attr_reader :prefix, :number
@@ -152,36 +152,36 @@ RSpec.describe Spree::BookkeepingDocument do
         end
       end
 
-      it 'returns a nicely formatted number' do
+      it "returns a nicely formatted number" do
         expect(document.formatted_number).to eq("MY-NICE-INVOICE-77")
       end
     end
 
-    context 'when using no formatter' do
+    context "when using no formatter" do
       before do
-        Spree::PrintInvoice.send(:remove_const, 'NumberFormatter')
+        Spree::PrintInvoice.send(:remove_const, "NumberFormatter")
       end
 
-      it 'returns a joined number' do
+      it "returns a joined number" do
         expect(document.formatted_number).to eq("INVOICE77")
       end
     end
   end
 
-  describe 'validations' do
+  describe "validations" do
     let(:pdf) { Spree::BookkeepingDocument.new }
-    it 'is not valid without aa printable' do
+    it "is not valid without aa printable" do
       expect(pdf).not_to be_valid
     end
   end
 
-  describe 'method_missing' do
-    it 'sends stuff that the view knows to the view' do
+  describe "method_missing" do
+    it "sends stuff that the view knows to the view" do
       expect_any_instance_of(Spree::Printables::Order::InvoiceView).to receive(:items)
       subject.items
     end
 
-    it 'accurately reports missing methods as missing' do
+    it "accurately reports missing methods as missing" do
       expect do
         subject.something_that_is_not_known
       end.to raise_error NoMethodError
