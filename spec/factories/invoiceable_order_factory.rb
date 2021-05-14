@@ -1,11 +1,11 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :invoiceable_order, class: Spree::Order do
     user
     bill_address
     ship_address
     completed_at nil
     email { user.email }
-    state 'confirm'
+    state "confirm"
     store
 
     transient do
