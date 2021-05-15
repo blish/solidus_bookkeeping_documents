@@ -1,5 +1,5 @@
 module SolidusBookkeepingDocuments
-  VERSION = "2.0.0.a"
+  VERSION = "2.0.0.rc1"
 
   def self.version
     VERSION
