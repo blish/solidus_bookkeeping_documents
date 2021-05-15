@@ -1,4 +1,4 @@
-class AddAttachmentUidSizeAndNameToBookkeepingDocument < ActiveRecord::Migration
+class AddAttachmentUidSizeAndNameToBookkeepingDocument < ActiveRecord::Migration[4.2]
   def change
     add_column :spree_bookkeeping_documents, :attachment_uid, :string
     add_column :spree_bookkeeping_documents, :attachment_name, :string

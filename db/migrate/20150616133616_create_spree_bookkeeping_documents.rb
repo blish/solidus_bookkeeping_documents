@@ -1,4 +1,4 @@
-class CreateSpreeBookkeepingDocuments < ActiveRecord::Migration
+class CreateSpreeBookkeepingDocuments < ActiveRecord::Migration[4.2]
   def up
     create_table :spree_bookkeeping_documents do |t|
       t.references :printable, polymorphic: true
@@ -14,9 +14,9 @@ class CreateSpreeBookkeepingDocuments < ActiveRecord::Migration
 
     Spree::Order.complete.where.not(invoice_number: nil).find_each do |order|
       order.pdfs.create(
-        template: 'invoice',
+        template: "invoice",
         number: order.invoice_number,
-        created_at: order.completed_at.to_date
+        created_at: order.completed_at.to_date,
       )
     end
 
