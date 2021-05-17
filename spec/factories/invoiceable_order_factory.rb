@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :invoiceable_order, class: Spree::Order do
     user
-    bill_address
-    ship_address
+    bill_address { build(:address, lastname: "Doe") }
+    ship_address { build(:address, lastname: "Doe") }
     completed_at nil
     email { user.email }
     state "confirm"
