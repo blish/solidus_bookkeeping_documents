@@ -76,7 +76,7 @@ module Spree
     #   Spree::PrintInvoice::Config.store_pdf to false
     #
     def pdf
-      send_or_create_pdf
+      send_or_create_pdf!
     end
 
     # = The PDF file_name
@@ -172,10 +172,10 @@ module Spree
     #
     # Renders and stores it if it's not yet present.
     #
-    def send_or_create_pdf
+    def send_or_create_pdf!
       unless attachment_stored?
         self.attachment = render_pdf
-        save
+        save!
       end
 
       IO.binread(attachment.file)

@@ -40,6 +40,14 @@ RSpec.describe Spree::BookkeepingDocument do
         expect(subject.pdf).to match(/%PDF-1.\d/)
       end
     end
+
+    context "with an invalid order" do
+      let(:printable) { create(:invoiceable_order, ship_address: build(:address, lastname: nil)) }
+
+      it "raises error" do
+        expect { subject.pdf }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
   end
 
   describe "#next_document_number" do
