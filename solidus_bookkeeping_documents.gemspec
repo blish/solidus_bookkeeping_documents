@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "deface", "~> 1.0"
   s.add_runtime_dependency "dragonfly", "~> 1.0"
 
-  "~> 2.0.0".tap do |solidus_version|
+  ["~> 2.0", "< 2.2.0"].tap do |solidus_version|
     s.add_runtime_dependency "solidus_core", solidus_version
     s.add_runtime_dependency "solidus_backend", solidus_version
   end
