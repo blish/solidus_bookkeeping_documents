@@ -38,5 +38,9 @@ module Spree
     def logo_scaling
       logo_scale.to_f / 100
     end
+
+    def invoice_logo_path
+      Rails.root.join("app", "assets", "images", Spree::PrintInvoice::Config[:logo_path])
+    end
   end
 end

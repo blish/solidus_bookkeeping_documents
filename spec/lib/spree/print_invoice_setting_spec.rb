@@ -36,4 +36,12 @@ RSpec.describe Spree::PrintInvoiceSetting do
       expect(subject.logo_scaling).to be(1.0)
     end
   end
+
+  describe '#invoice_logo_path' do
+    let(:logo_path) { Rails.root.join("app", "assets", "images", Spree::PrintInvoice::Config[:logo_path]) }
+    it 'is set' do
+      expect(subject.invoice_logo_path).to eq(logo_path)
+      expect(Spree::PrintInvoice::Config.invoice_logo_path).to eq(logo_path)
+    end
+  end
 end
