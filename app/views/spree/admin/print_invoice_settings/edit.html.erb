@@ -8,13 +8,13 @@
   <fieldset class="no-border-top">
     <div data-hook="admin_print_invoice_method_form_fields">
       <div class="row">
-        <div class="alpha eight columns" data-hook="pdf">
+        <div class="col-md-6" data-hook="pdf">
           <fieldset class="no-border-bottom">
             <legend><%= Spree.t(:pdf_legend, scope: :print_invoice) %></legend>
 
             <div class="field">
               <%= label_tag :logo_path, Spree.t(:logo_path, scope: [:print_invoice, :preferences]) %>
-              <%= preference_field_tag(:logo_path, Spree::PrintInvoice::Config[:logo_path], class: 'form-control') %>
+              <%= text_field_tag(:logo_path, Spree::PrintInvoice::Config[:logo_path], class: 'form-control') %>
             </div>
 
             <div class="field">
@@ -50,13 +50,15 @@
             <div class="field">
               <div class="checkbox">
                 <%= label_tag :use_footer do %>
-                  <%= preference_field_tag(:use_footer, Spree::PrintInvoice::Config[:use_footer], type: :boolean) %>
+                  <%= hidden_field_tag :use_page_numbers, 0 %>
+                  <%= check_box_tag(:use_footer, 1, Spree::PrintInvoice::Config[:use_footer]) %>
                   <%= Spree.t(:use_footer, scope: [:print_invoice, :preferences]) %>
                 <% end %>
               </div>
               <div class="checkbox">
                 <%= label_tag :use_page_numbers do %>
-                  <%= preference_field_tag(:use_page_numbers, Spree::PrintInvoice::Config[:use_page_numbers], type: :boolean) %>
+                  <%= hidden_field_tag :use_page_numbers, 0 %>
+                  <%= check_box_tag(:use_page_numbers, 1, Spree::PrintInvoice::Config[:use_page_numbers]) %>
                   <%= Spree.t(:use_page_numbers, scope: [:print_invoice, :preferences]) %>
                 <% end %>
               </div>
@@ -64,7 +66,7 @@
           </fieldset>
         </div>
 
-        <div class="eight columns omega" data-hook="invoice">
+        <div class="col-md-6" data-hook="invoice">
           <fieldset class="no-border-bottom">
             <legend><%= Spree.t(:invoice_slip_legend, scope: :print_invoice) %></legend>
 
