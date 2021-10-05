@@ -23,11 +23,7 @@ RSpec.describe Spree::Order do
   end
 
   describe 'checkout flow' do
-    let(:order) { create :order_with_line_items, state: 'confirm' }
-
-    before do
-      order.payments = [create(:payment)]
-    end
+    let(:order) { create(:order_ready_to_complete) }
 
     it 'creates a new invoice when completing the order' do
       expect do
