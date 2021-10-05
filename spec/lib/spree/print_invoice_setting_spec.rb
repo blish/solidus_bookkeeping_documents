@@ -1,5 +1,5 @@
 RSpec.describe Spree::PrintInvoiceSetting do
-  subject { described_class.new }
+  subject { described_class }
 
   describe '#page_sizes' do
     it 'has a list of page sizes' do
@@ -38,10 +38,11 @@ RSpec.describe Spree::PrintInvoiceSetting do
   end
 
   describe '#invoice_logo_path' do
-    let(:logo_path) { Rails.root.join("app", "assets", "images", Spree::PrintInvoice::Config[:logo_path]) }
+    let(:logo_path) { Rails.root.join("app", "assets", "images", Spree::PrintInvoiceSetting.logo_path) }
+
     it 'is set' do
       expect(subject.invoice_logo_path).to eq(logo_path)
-      expect(Spree::PrintInvoice::Config.invoice_logo_path).to eq(logo_path)
+      expect(Spree::PrintInvoiceSetting.invoice_logo_path).to eq(logo_path)
     end
   end
 end

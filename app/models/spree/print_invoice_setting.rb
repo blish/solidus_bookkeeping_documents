@@ -35,14 +35,37 @@ module Spree
       def font_sizes
         (7..14).to_a
       end
-    end
 
-    def logo_scaling
-      preferred_logo_scale.to_f / 100
-    end
+      def invoice_logo_path
+        Rails.root.join("app", "assets", "images", logo_path)
+      end
 
-    def invoice_logo_path
-      Rails.root.join("app", "assets", "images", preferred_logo_path)
+      def logo_scaling
+        logo_scale.to_f / 100
+      end
+
+      private
+
+      def method_missing(method_name, *args, &block)
+        preference_name = method_name.to_s.sub(/(.+)=$/, '\1')
+        if persisted_preferences&.has_preference?(preference_name)
+          if method_name.to_s.end_with?("=")
+            persisted_preferences.set_preference(preference_name, args.first)
+          else
+            persisted_preferences.get_preference(preference_name)
+          end
+        else
+          super
+        end
+      end
+
+      def respond_to_missing(*args)
+        persisted_preferences&.has_preference?(args.first) || super
+      end
+
+      def persisted_preferences
+        @persisted_preferences ||= first || create
+      end
     end
   end
 end

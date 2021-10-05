@@ -118,7 +118,7 @@ module Spree
     #
     def next_document_number
       self.class.current_document_number(number_scope).try(:+, 1) ||
-        Spree::PrintInvoice::Config.next_number || 1
+        Spree::PrintInvoiceSetting.next_number || 1
     end
 
     def formatted_number

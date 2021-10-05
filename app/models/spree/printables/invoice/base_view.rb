@@ -11,7 +11,7 @@ module Spree
 
     class << self
       def document_number_prefix
-        Spree::PrintInvoice::Config.invoice_number_prefix
+        Spree::PrintInvoiceSetting.invoice_number_prefix
       end
     end
 
