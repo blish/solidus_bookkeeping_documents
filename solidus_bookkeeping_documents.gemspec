@@ -27,7 +27,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "capybara", "~> 2.4"
   s.add_development_dependency "bourbon", ">= 4", "< 5"
-  s.add_development_dependency "poltergeist", "~> 1.5"
   s.add_development_dependency "rspec-rails", "~> 3.3"
   s.add_development_dependency "simplecov", "~> 0.10.0"
   s.add_development_dependency "database_cleaner", "~> 1.4"
@@ -44,4 +43,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "listen", "~> 3.1.5"
   s.add_development_dependency "rake", "< 11.0"
   s.add_development_dependency "rails-controller-testing"
+  s.add_development_dependency "webdrivers", ["~> 4.0"]
 end
