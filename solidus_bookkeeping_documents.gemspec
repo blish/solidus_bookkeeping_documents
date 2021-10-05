@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version = SolidusBookkeepingDocuments::VERSION
   s.summary = "Print invoices and packing slips from Solidus Orders"
   s.description = s.summary
-  s.required_ruby_version = [">= 2.5", "< 2.7"]
+  s.required_ruby_version = [">= 2.5", "< 3.0"]
 
   s.authors = ["Thomas von Deyen", "Martin Meyerhoff"]
   s.email = "hello@blish.cloud"
@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "deface", "~> 1.0"
   s.add_runtime_dependency "dragonfly", "~> 1.0"
 
-  ["~> 2.4"].tap do |solidus_version|
+  ["~> 2.5"].tap do |solidus_version|
     s.add_runtime_dependency "solidus_core", solidus_version
     s.add_runtime_dependency "solidus_backend", solidus_version
   end
