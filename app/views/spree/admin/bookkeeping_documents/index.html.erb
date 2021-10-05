@@ -23,18 +23,20 @@
       <%= search_form_for [:admin, @search] do |f| %>
         <%= f.hidden_field :template_cont, value: params[:q][:template_cont] %>
         <div class="row">
-          <div class="five columns alpha">
+          <div class="col-md-6">
             <div class="date-range-filter field">
               <%= f.label :created_at_gt,
                 Spree::BookkeepingDocument.human_attribute_name(:created_at) %>
-              <div class="date-range-fields">
+              <div class="date-range-fields input-group">
                 <%= f.text_field :created_at_gt,
                   value: params[:q][:created_at_gt],
                   class: 'datepicker datepicker-from',
                   placeholder: Spree.t(:start) %>
-                <span class="range-divider">
-                  <i class="fa fa-arrow-right"></i>
-                </span>
+                <div class="input-group-prepend input-group-append">
+                  <span class="input-group-text range-divider">
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
+                </div>
                 <%= f.text_field :created_at_lt,
                   value: params[:q][:created_at_lt],
                   class: 'datepicker datepicker-to',
@@ -42,7 +44,7 @@
               </div>
             </div>
           </div>
-          <div class="eleven columns omega">
+          <div class="col-md-6">
             <div class="field">
               <%= label_tag :q_number_cont, Spree.t(:printable_number, scope: 'print_invoice') %>
               <%= f.text_field :number_cont, class: 'form-control js-quick-search-target' %>
@@ -51,19 +53,19 @@
         </div>
 
         <div class="row">
-          <div class="five columns alpha">
+          <div class="col-md-4">
             <div class="field">
               <%= label_tag :q_firstname_start, Spree.t(:first_name_begins_with) %>
               <%= f.text_field :firstname_start, class: 'form-control' %>
             </div>
           </div>
-          <div class="five columns">
+          <div class="col-md-4">
             <div class="field">
               <%= label_tag :q_lastname_start, Spree.t(:last_name_begins_with) %>
               <%= f.text_field :lastname_start, class: 'form-control' %>
             </div>
           </div>
-          <div class="six columns omega">
+          <div class="col-md-4">
             <div class="field">
               <%= label_tag :q_email_cont, Spree.t(:email) %>
               <%= f.text_field :email_cont, class: 'form-control js-filterable' %>
@@ -91,7 +93,7 @@
     <%= render "table" %>
   <% end %>
 <% else %>
-  <div class="alert alert-info no-objects-found">
+  <div class="alert alert-info text-center">
     <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::BookkeepingDocument)) %>
   </div>
 <% end %>
