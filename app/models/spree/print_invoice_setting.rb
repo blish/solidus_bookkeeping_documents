@@ -1,23 +1,25 @@
 module Spree
   class PrintInvoiceSetting < Spree::Base
-    preference :next_number,      :integer, default: nil
-    preference :logo_path,        :string,  default: 'pdf-print/invoice-logo.jpg'
-    preference :page_size,        :string,  default: 'A4'
-    preference :page_layout,      :string,  default: 'portrait'
-    preference :footer_left,      :string,  default: ''
-    preference :footer_right,     :string,  default: ''
-    preference :return_message,   :text,    default: ''
-    preference :anomaly_message,  :text,    default: ''
-    preference :use_footer,       :boolean, default: false
-    preference :use_page_numbers, :boolean, default: false
-    preference :logo_scale,       :integer, default: 50
-    preference :font_face,        :string,  default: 'Helvetica'
-    preference :font_size,        :integer, default: 9
+    preference :next_number,      :integer, default: -> { defaults[:next_number] }
+    preference :logo_path,        :string,  default: -> { defaults[:logo_path] }
+    preference :page_size,        :string,  default: -> { defaults[:page_size] }
+    preference :page_layout,      :string,  default: -> { defaults[:page_layout] }
+    preference :footer_left,      :string,  default: -> { defaults[:footer_left] }
+    preference :footer_right,     :string,  default: -> { defaults[:footer_right] }
+    preference :return_message,   :text,    default: -> { defaults[:return_message] }
+    preference :anomaly_message,  :text,    default: -> { defaults[:anomaly_message] }
+    preference :use_footer,       :boolean, default: -> { defaults[:use_footer] }
+    preference :use_page_numbers, :boolean, default: -> { defaults[:use_page_numbers] }
+    preference :logo_scale,       :integer, default: -> { defaults[:logo_scale] }
+    preference :font_face,        :string,  default: -> { defaults[:font_face] }
+    preference :font_size,        :integer, default: -> { defaults[:font_size] }
 
-    preference :invoice_number_prefix,        :string,  default: 'I-'
-    preference :packaging_slip_number_prefix, :string,  default: 'P-'
+    preference :invoice_number_prefix,        :string, default: -> { defaults[:invoice_number_prefix] }
+    preference :packaging_slip_number_prefix, :string, default: -> { defaults[:packaging_slip_number_prefix] }
 
     class << self
+      attr_accessor :defaults
+
       def page_sizes
         ::PDF::Core::PageGeometry::SIZES.keys
       end
@@ -66,6 +68,10 @@ module Spree
       def persisted_preferences
         @persisted_preferences ||= first || create
       end
+    end
+
+    def defaults
+      self.class.defaults || {}
     end
   end
 end

@@ -36,6 +36,11 @@ RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.syntax = :expect
   end
+
+  # Avoid insta cache to leak into single examples
+  config.after(:each) do
+    Spree::PrintInvoiceSetting.instance_variable_set(:@persisted_preferences, nil)
+  end
 end
 
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |file| require file }
