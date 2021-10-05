@@ -1,6 +1,6 @@
 @font_style = {
-  face: Spree::PrintInvoice::Config[:font_face],
-  size: Spree::PrintInvoice::Config[:font_size]
+  face: Spree::PrintInvoiceSetting.font_face,
+  size: Spree::PrintInvoiceSetting.font_size
 }
 
 prawn_document(force_download: true) do |pdf|
@@ -24,7 +24,7 @@ prawn_document(force_download: true) do |pdf|
     render 'spree/printables/shared/packaging_slip/items', pdf: pdf, printable: @doc
 
     pdf.move_down 30
-    pdf.text Spree::PrintInvoice::Config[:anomaly_message], align: :left, size: @font_size
+    pdf.text Spree::PrintInvoiceSetting.anomaly_message, align: :left, size: @font_size
 
     pdf.move_down 20
     pdf.bounding_box([0, pdf.cursor], width: pdf.bounds.width, height: 250) do
@@ -33,12 +33,12 @@ prawn_document(force_download: true) do |pdf|
   end
 
   # Footer
-  if Spree::PrintInvoice::Config[:use_footer]
+  if Spree::PrintInvoiceSetting.use_footer
     render 'spree/printables/shared/footer', pdf: pdf
   end
 
   # Page Number
-  if Spree::PrintInvoice::Config[:use_page_numbers]
+  if Spree::PrintInvoiceSetting.use_page_numbers
     render 'spree/printables/shared/page_number', pdf: pdf
   end
 end

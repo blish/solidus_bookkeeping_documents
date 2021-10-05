@@ -3,7 +3,7 @@ module Spree
 
     class << self
       def document_number_prefix
-        Spree::PrintInvoice::Config.packaging_slip_number_prefix
+        Spree::PrintInvoiceSetting.packaging_slip_number_prefix
       end
     end
 

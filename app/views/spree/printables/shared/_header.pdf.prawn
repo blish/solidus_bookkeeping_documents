@@ -1,5 +1,5 @@
-if File.exist?(Spree::PrintInvoice::Config.invoice_logo_path)
-  pdf.image Spree::PrintInvoice::Config.invoice_logo_path, vposition: :top, height: 40, scale: Spree::PrintInvoice::Config[:logo_scale]
+if File.exist?(Spree::PrintInvoiceSetting.invoice_logo_path)
+  pdf.image Spree::PrintInvoiceSetting.invoice_logo_path, vposition: :top, height: 40, scale: Spree::PrintInvoiceSetting.logo_scale
 end
 
 pdf.grid([0,3], [1,4]).bounding_box do

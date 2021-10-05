@@ -20,16 +20,16 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "deface", "~> 1.0"
   s.add_runtime_dependency "dragonfly", "~> 1.0"
 
-  ["~> 2.0"].tap do |solidus_version|
+  ["~> 2.4"].tap do |solidus_version|
     s.add_runtime_dependency "solidus_core", solidus_version
     s.add_runtime_dependency "solidus_backend", solidus_version
   end
 
   s.add_development_dependency "capybara", "~> 2.4"
+  s.add_development_dependency "capybara-screenshot", ["~> 1.0"]
   s.add_development_dependency "bourbon", ">= 4", "< 5"
-  s.add_development_dependency "poltergeist", "~> 1.5"
   s.add_development_dependency "rspec-rails", "~> 3.3"
-  s.add_development_dependency "simplecov", "~> 0.10.0"
+  s.add_development_dependency "simplecov", "~> 0.10"
   s.add_development_dependency "database_cleaner", "~> 1.4"
   s.add_development_dependency "coffee-rails", "~> 4.1"
   s.add_development_dependency "sass-rails", "~> 5.0"
@@ -44,4 +44,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "listen", "~> 3.1.5"
   s.add_development_dependency "rake", "< 11.0"
   s.add_development_dependency "rails-controller-testing"
+  s.add_development_dependency "webdrivers", ["~> 4.0"]
 end

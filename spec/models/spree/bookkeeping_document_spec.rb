@@ -104,7 +104,7 @@ RSpec.describe Spree::BookkeepingDocument do
 
       context "and next_number is configured" do
         before do
-          allow(Spree::PrintInvoice::Config).to receive(:next_number) { 11 }
+          allow(Spree::PrintInvoiceSetting).to receive(:next_number) { 11 }
         end
 
         it "returns the next number from settings" do
@@ -114,7 +114,7 @@ RSpec.describe Spree::BookkeepingDocument do
 
       context "and next_number is not configured" do
         before do
-          allow(Spree::PrintInvoice::Config).to receive(:next_number) { nil }
+          allow(Spree::PrintInvoiceSetting).to receive(:next_number) { nil }
         end
 
         it "returns 1" do
@@ -140,8 +140,8 @@ RSpec.describe Spree::BookkeepingDocument do
     end
 
     before do
-      allow(Spree::PrintInvoice::Config).to receive(:next_number) { 77 }
-      allow(Spree::PrintInvoice::Config).to receive(:invoice_number_prefix) { "INVOICE" }
+      allow(Spree::PrintInvoiceSetting).to receive(:next_number) { 77 }
+      allow(Spree::PrintInvoiceSetting).to receive(:invoice_number_prefix) { "INVOICE" }
     end
 
     context "when using a NumberFormatter" do
