@@ -1,5 +1,6 @@
 require 'capybara/rspec'
 require 'capybara/rails'
+require "capybara-screenshot/rspec"
 require "webdrivers/chromedriver"
 
 Capybara.register_driver :selenium_chrome_headless do |app|
