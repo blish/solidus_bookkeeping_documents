@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "capybara", "~> 2.4"
   s.add_development_dependency "bourbon", ">= 4", "< 5"
   s.add_development_dependency "rspec-rails", "~> 3.3"
-  s.add_development_dependency "simplecov", "~> 0.10.0"
+  s.add_development_dependency "simplecov", "~> 0.10"
   s.add_development_dependency "database_cleaner", "~> 1.4"
   s.add_development_dependency "coffee-rails", "~> 4.1"
   s.add_development_dependency "sass-rails", "~> 5.0"
