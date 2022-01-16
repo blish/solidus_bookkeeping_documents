@@ -8,7 +8,7 @@ RSpec.feature 'Admin print invoice feature' do
   # scenario 'shows documents button on order page.' do
   #   visit spree.edit_admin_order_path(id: order.number)
   #   within('#sidebar') do
-  #     expect(page).to have_link Spree.t(:documents, scope: :print_invoice)
+  #     expect(page).to have_link I18n.t(:documents, scope: "spree.print_invoice")
   #   end
   # end
 
