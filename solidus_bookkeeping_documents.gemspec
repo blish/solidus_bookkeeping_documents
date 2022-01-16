@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry-rails", ">= 0.3.0"
   s.add_development_dependency "rubocop", ">= 0.24.1"
   s.add_development_dependency "factory_bot", "~> 4.10.0"
-  s.add_development_dependency "sqlite3", "~> 1.3.7"
+  s.add_development_dependency "sqlite3", "~> 1.4"
   s.add_development_dependency "puma"
   s.add_development_dependency "listen", "~> 3.1.5"
   s.add_development_dependency "rake", "< 11.0"
