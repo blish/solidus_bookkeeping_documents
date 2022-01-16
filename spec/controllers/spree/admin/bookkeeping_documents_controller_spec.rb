@@ -2,7 +2,6 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
   stub_authorization!
 
   before do
-    reset_spree_preferences
     user = build(:admin_user)
     allow(controller).to receive(:try_spree_current_user).and_return(user)
   end
