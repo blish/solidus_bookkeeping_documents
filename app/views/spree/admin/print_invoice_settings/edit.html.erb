@@ -1,8 +1,8 @@
 <% content_for :page_title do %>
-  <%= Spree.t(:settings, scope: :print_invoice) %>
+  <%= t(:settings, scope: "spree.print_invoice") %>
 <% end %>
 
-<% admin_breadcrumb(Spree.t(:settings)) %>
+<% admin_breadcrumb(t(:settings, scope: :spree)) %>
 
 <%= form_for([spree, :admin, @print_invoice_setting], url: spree.admin_print_invoice_settings_path, method: :patch) do |f| %>
   <fieldset class="no-border-top">
@@ -10,40 +10,40 @@
       <div class="row">
         <div class="col-md-6" data-hook="pdf">
           <fieldset class="no-border-bottom">
-            <legend align="center"><%= Spree.t(:pdf_legend, scope: :print_invoice) %></legend>
+            <legend align="center"><%= t(:pdf_legend, scope: "spree.print_invoice") %></legend>
 
             <div class="field">
-              <%= f.label :preferred_logo_path, Spree.t(:logo_path, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_logo_path, t(:logo_path, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.text_field(:preferred_logo_path, class: 'form-control') %>
             </div>
 
             <div class="field">
-              <%= f.label :preferred_next_number, Spree.t(:next_number, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_next_number, t(:next_number, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.number_field(:preferred_next_number, class: 'form-control') %>
             </div>
 
             <div class="field">
-              <%= f.label :preferred_page_size, Spree.t(:page_size, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_page_size, t(:page_size, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.select(:preferred_page_size, options_for_select(Spree::PrintInvoiceSetting.page_sizes, @print_invoice_setting.preferred_page_size), {}, class: 'select2 fullwidth') %>
             </div>
 
             <div class="field">
-              <%= f.label :preferred_page_layout, Spree.t(:page_layout, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_page_layout, t(:page_layout, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.select(:preferred_page_layout, options_for_select(Spree::PrintInvoiceSetting.page_layouts, @print_invoice_setting.preferred_page_layout), {}, class: 'select2 fullwidth') %>
             </div>
 
             <div class="field">
-              <%= f.label :preferred_font_face, Spree.t(:font_face, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_font_face, t(:font_face, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.select(:preferred_font_face, options_for_select(Spree::PrintInvoiceSetting.font_faces, @print_invoice_setting.preferred_font_face), {}, class: 'select2 fullwidth') %>
             </div>
 
             <div class="field">
-              <%= f.label :preferred_font_size, Spree.t(:font_size, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_font_size, t(:font_size, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.select(:preferred_font_size, options_for_select(Spree::PrintInvoiceSetting.font_sizes.map(&:to_s), @print_invoice_setting.preferred_font_size), {}, class: 'select2 fullwidth') %>
             </div>
 
             <div class="field">
-              <%= f.label :preferred_logo_scale, Spree.t(:logo_scale, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_logo_scale, t(:logo_scale, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.number_field(:preferred_logo_scale, in: 1...101, class: 'form-control') %>
             </div>
 
@@ -51,13 +51,13 @@
               <div class="checkbox">
                 <%= f.label :preferred_use_footer do %>
                   <%= f.check_box(:preferred_use_footer) %>
-                  <%= Spree.t(:use_footer, scope: [:print_invoice, :preferences]) %>
+                  <%= t(:use_footer, scope: [:spree, :print_invoice, :preferences]) %>
                 <% end %>
               </div>
               <div class="checkbox">
                 <%= f.label :preferred_use_page_numbers do %>
                   <%= f.check_box(:preferred_use_page_numbers) %>
-                  <%= Spree.t(:use_page_numbers, scope: [:print_invoice, :preferences]) %>
+                  <%= t(:use_page_numbers, scope: [:spree, :print_invoice, :preferences]) %>
                 <% end %>
               </div>
             </div>
@@ -66,31 +66,31 @@
 
         <div class="col-md-6" data-hook="invoice">
           <fieldset class="no-border-bottom">
-            <legend align="center"><%= Spree.t(:invoice_slip_legend, scope: :print_invoice) %></legend>
+            <legend align="center"><%= t(:invoice_slip_legend, scope: "spree.print_invoice") %></legend>
 
             <div class="field">
-              <%= f.label :preferred_footer_left, Spree.t(:footer_left, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_footer_left, t(:footer_left, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.text_area(:preferred_footer_left, rows: 5, class: 'form-control') %>
               <span class="info")>
-                <%= Spree.t(:footer_left_info, scope: [:print_invoice, :preferences]) %>
+                <%= t(:footer_left_info, scope: [:spree, :print_invoice, :preferences]) %>
               </span>
             </div>
 
             <div class="field">
-              <%= f.label :preferred_footer_right, Spree.t(:footer_right, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_footer_right, t(:footer_right, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.text_area(:preferred_footer_right, rows: 5, class: 'form-control') %>
               <span class="info")>
-                <%= Spree.t(:footer_right_info, scope: [:print_invoice, :preferences]) %>
+                <%= t(:footer_right_info, scope: [:spree, :print_invoice, :preferences]) %>
               </span>
             </div>
 
             <div class="field">
-              <%= f.label :preferred_return_message, Spree.t(:return_message, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_return_message, t(:return_message, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.text_area(:preferred_return_message, rows: 6, class: 'form-control') %>
             </div>
 
             <div class="field">
-              <%= f.label :preferred_anomaly_message, Spree.t(:anomaly_message, scope: [:print_invoice, :preferences]) %>
+              <%= f.label :preferred_anomaly_message, t(:anomaly_message, scope: [:spree, :print_invoice, :preferences]) %>
               <%= f.text_area(:preferred_anomaly_message, rows: 6, class: 'form-control') %>
             </div>
           </fieldset>
@@ -98,7 +98,7 @@
       </div>
 
       <div class="filter-actions" data-hook="buttons">
-        <%= button Spree.t('actions.update') %>
+        <%= button_tag t('spree.actions.update') %>
       </div>
     </div>
   </fieldset>

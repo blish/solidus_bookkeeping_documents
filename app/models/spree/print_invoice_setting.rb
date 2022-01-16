@@ -1,5 +1,7 @@
 module Spree
   class PrintInvoiceSetting < Spree::Base
+    include Spree::Preferences::Persistable
+
     preference :next_number,      :integer, default: -> { defaults[:next_number] }
     preference :logo_path,        :string,  default: -> { defaults[:logo_path] }
     preference :page_size,        :string,  default: -> { defaults[:page_size] }

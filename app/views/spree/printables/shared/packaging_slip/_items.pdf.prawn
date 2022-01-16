@@ -1,8 +1,8 @@
-header =  [
-  pdf.make_cell(content: Spree.t(:sku)),
-  pdf.make_cell(content: Spree.t(:item_description)),
-  pdf.make_cell(content: Spree.t(:options)),
-  pdf.make_cell(content: Spree.t(:qty))
+header = [
+  pdf.make_cell(content: I18n.t(:sku, scope: :spree)),
+  pdf.make_cell(content: I18n.t(:item_description, scope: :spree)),
+  pdf.make_cell(content: I18n.t(:options, scope: :spree)),
+  pdf.make_cell(content: I18n.t(:qty, scope: :spree)),
 ]
 data = [header]
 
@@ -11,7 +11,7 @@ printable.items.each do |item|
     item.sku,
     item.name,
     item.options_text,
-    item.quantity
+    item.quantity,
   ]
   data += [row]
 end

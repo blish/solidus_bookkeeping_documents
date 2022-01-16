@@ -2,7 +2,6 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
   stub_authorization!
 
   before do
-    reset_spree_preferences
     user = build(:admin_user)
     allow(controller).to receive(:try_spree_current_user).and_return(user)
   end
@@ -19,7 +18,7 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
 
         it "renders pdf" do
           get :show, params: { id: pdf.id }, format: :pdf
-          expect(response).to be_success
+          expect(response).to be_successful
         end
       end
 
@@ -30,7 +29,7 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
 
         it "renders pdf" do
           get :show, params: { id: pdf.id }, format: :pdf
-          expect(response).to be_success
+          expect(response).to be_successful
         end
       end
     end
@@ -41,22 +40,18 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
 
       it "renders pdf" do
         get :show, params: { id: pdf.id }, format: :pdf
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
   end
 
   describe "#index as :html" do
     let(:bills_address) do
-      create :address,
-             firstname: "Bill",
-             lastname: "Murray"
+      create(:address, name: "Bill Murray")
     end
 
     let(:joes_address) do
-      create :address,
-             firstname: "Joe",
-             lastname: "Dalton"
+      create(:address, name: "Joe Dalton")
     end
 
     let!(:bills_order) do
@@ -75,7 +70,7 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
       before { get(:index, params: { order_id: bills_order.number }) }
 
       it "returns 200 success" do
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       it "assigns @bookkeeping_documents" do
@@ -92,7 +87,7 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
       before { get :index, params: {} }
 
       it "returns 200 success" do
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       it "assigns @bookkeeping_documents" do

@@ -2,7 +2,7 @@
   <% if @order && @order.completed_at? %>
       <li class='<%= "#{'active' if current == :documents}" %>'>
         <%=
-          link_to Spree.t(:documents, scope: :print_invoice),
+          link_to t(:documents, scope: "spree.print_invoice"),
             spree.admin_order_bookkeeping_documents_path(@order),
             title: title
         %>

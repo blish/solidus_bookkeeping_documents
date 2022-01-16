@@ -42,7 +42,7 @@ RSpec.describe Spree::BookkeepingDocument do
     end
 
     context "with an invalid order" do
-      let(:printable) { create(:invoiceable_order, ship_address: build(:address, lastname: nil)) }
+      let(:printable) { create(:invoiceable_order, ship_address: build(:address, name: nil)) }
 
       it "raises error" do
         expect { subject.pdf }.to raise_error(ActiveRecord::RecordInvalid)

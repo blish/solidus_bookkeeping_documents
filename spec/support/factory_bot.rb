@@ -1,7 +1,7 @@
 require "factory_bot"
-require "spree/testing_support/factories"
+require "spree/testing_support/factory_bot"
 
-FactoryBot.find_definitions
+Spree::TestingSupport::FactoryBot.add_paths_and_load!
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods

@@ -15,7 +15,7 @@
   <% end %>
 
   <% content_for :table_filter_title do %>
-    <%= Spree.t(:search) %>
+    <%= t(:search, scope: :spree) %>
   <% end %>
 
   <% content_for :table_filter do %>
@@ -31,7 +31,7 @@
                 <%= f.text_field :created_at_gt,
                   value: params[:q][:created_at_gt],
                   class: 'datepicker datepicker-from',
-                  placeholder: Spree.t(:start) %>
+                  placeholder: t(:start, scope: :spree) %>
                 <div class="input-group-prepend input-group-append">
                   <span class="input-group-text range-divider">
                     <i class="fa fa-arrow-right"></i>
@@ -40,13 +40,13 @@
                 <%= f.text_field :created_at_lt,
                   value: params[:q][:created_at_lt],
                   class: 'datepicker datepicker-to',
-                  placeholder: Spree.t(:stop) %>
+                  placeholder: t(:stop, scope: :spree) %>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="field">
-              <%= label_tag :q_number_cont, Spree.t(:printable_number, scope: 'print_invoice') %>
+              <%= label_tag :q_number_cont, t(:printable_number, scope: "spree.print_invoice") %>
               <%= f.text_field :number_cont, class: 'form-control js-quick-search-target' %>
             </div>
           </div>
@@ -55,26 +55,26 @@
         <div class="row">
           <div class="col-md-4">
             <div class="field">
-              <%= label_tag :q_firstname_start, Spree.t(:first_name_begins_with) %>
+              <%= label_tag :q_firstname_start, t(:first_name_begins_with, scope: :spree) %>
               <%= f.text_field :firstname_start, class: 'form-control' %>
             </div>
           </div>
           <div class="col-md-4">
             <div class="field">
-              <%= label_tag :q_lastname_start, Spree.t(:last_name_begins_with) %>
+              <%= label_tag :q_lastname_start, t(:last_name_begins_with, scope: :spree) %>
               <%= f.text_field :lastname_start, class: 'form-control' %>
             </div>
           </div>
           <div class="col-md-4">
             <div class="field">
-              <%= label_tag :q_email_cont, Spree.t(:email) %>
+              <%= label_tag :q_email_cont, t(:email, scope: :spree) %>
               <%= f.text_field :email_cont, class: 'form-control js-filterable' %>
             </div>
           </div>
         </div>
 
         <div data-hook="admin_orders_index_search_buttons" class="filter-actions">
-          <%= button Spree.t(:filter_results) %>
+          <%= button_tag t(:filter_results, scope: :spree) %>
         </div>
       <% end %>
     </div>
@@ -94,7 +94,7 @@
   <% end %>
 <% else %>
   <div class="alert alert-info text-center">
-    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::BookkeepingDocument)) %>
+    <%= t(:no_resource_found, scope: :spree, resource: plural_resource_name(Spree::BookkeepingDocument)) %>
   </div>
 <% end %>
 
