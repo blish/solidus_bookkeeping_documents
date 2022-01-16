@@ -18,17 +18,21 @@ module Spree
           options_text: item.variant.options_text,
           price: item.price,
           quantity: item.quantity,
-          total: item.total
+          total: item.total,
         )
       end
     end
 
+    def name
+      printable.tax_address.name
+    end
+
     def firstname
-      printable.tax_address.firstname
+      name.split(/[[:space:]]/, 2).first
     end
 
     def lastname
-      printable.tax_address.lastname
+      name.split(/[[:space:]]/, 2).last
     end
 
     private

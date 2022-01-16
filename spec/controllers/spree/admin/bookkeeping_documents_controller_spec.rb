@@ -47,15 +47,11 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
 
   describe "#index as :html" do
     let(:bills_address) do
-      create :address,
-             firstname: "Bill",
-             lastname: "Murray"
+      create(:address, name: "Bill Murray")
     end
 
     let(:joes_address) do
-      create :address,
-             firstname: "Joe",
-             lastname: "Dalton"
+      create(:address, name: "Joe Dalton")
     end
 
     let!(:bills_order) do
