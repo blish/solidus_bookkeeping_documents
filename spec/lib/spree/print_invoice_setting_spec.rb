@@ -58,7 +58,7 @@ RSpec.describe Spree::PrintInvoiceSetting do
     expect(subject.use_footer).to eq(nil)
     expect(subject.use_page_numbers).to eq(nil)
     expect(subject.logo_scale).to eq(50)
-    expect(subject.font_face).to eq("Helvetica")
+    expect(subject.font_face).to eq("Sans Serif")
     expect(subject.font_size).to eq(9)
   end
 
@@ -76,7 +76,7 @@ RSpec.describe Spree::PrintInvoiceSetting do
         use_footer: true,
         use_page_numbers: true,
         logo_scale: 500,
-        font_face: "Times-Roman",
+        font_face: "Serif",
         font_size: 11,
         invoice_number_prefix: "RE",
         packaging_slip_number_prefix: "L",
