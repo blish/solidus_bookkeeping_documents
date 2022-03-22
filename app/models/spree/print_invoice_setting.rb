@@ -31,9 +31,11 @@ module Spree
       end
 
       def font_faces
-        ::Prawn::Font::AFM::BUILT_INS.reject do |font|
-          font =~ /zapf|symbol|bold|italic|oblique/i
-        end
+        [
+          "Serif",
+          "Sans Serif",
+          "Monospace",
+        ]
       end
 
       def font_sizes

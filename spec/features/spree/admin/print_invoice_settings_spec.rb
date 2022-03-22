@@ -11,7 +11,7 @@ RSpec.feature 'Settings for Print Invoice' do
     fill_in 'Next Number', with: '200'
     select2 'A4', from: 'Page Size'
     select2 'portrait', from: 'Page Layout'
-    select2 'Courier', from: 'Font Face'
+    select2 'Monospace', from: 'Font Face'
     select2 '11', from: 'Font Size'
     fill_in 'Logo Scale', with: '99'
     fill_in 'Left Footer Content', with: 'left text..'
@@ -30,7 +30,7 @@ RSpec.feature 'Settings for Print Invoice' do
     expect(setting.preferred_next_number).to eq 200
     expect(setting.preferred_page_size).to eq 'A4'
     expect(setting.preferred_page_layout).to eq 'portrait'
-    expect(setting.preferred_font_face).to eq 'Courier'
+    expect(setting.preferred_font_face).to eq 'Monospace'
     expect(setting.preferred_font_size).to eq 11
     expect(setting.preferred_logo_scale).to eq 99
     expect(setting.preferred_footer_left).to eq 'left text..'
