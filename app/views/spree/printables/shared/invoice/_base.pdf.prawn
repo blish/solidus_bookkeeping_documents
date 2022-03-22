@@ -4,6 +4,8 @@ font_style = {
 }
 
 prawn_document(force_download: true) do |pdf|
+  render "spree/printables/shared/font_families", pdf: pdf
+
   pdf.define_grid(columns: 5, rows: 8, gutter: 10)
   pdf.font font_style[:face], size: font_style[:size]
 
