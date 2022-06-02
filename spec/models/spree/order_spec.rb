@@ -1,37 +1,37 @@
 RSpec.describe Spree::Order do
-  describe 'delegates' do
+  describe "delegates" do
     let(:order) { Spree::Order.new }
-    let(:invoice) { Spree::BookkeepingDocument.new(printable: order, template: 'invoice') }
+    let(:invoice) { Spree::BookkeepingDocument.new(printable: order, template: "invoice") }
 
     before do
       allow(order).to receive(:invoice) { invoice }
     end
 
-    describe '#invoice_number' do
-      it 'calls invoice' do
+    describe "#invoice_number" do
+      it "calls invoice" do
         expect(invoice).to receive(:number)
         order.invoice_number
       end
     end
 
-    describe '#invoice_date' do
-      it 'calls invoice' do
+    describe "#invoice_date" do
+      it "calls invoice" do
         expect(invoice).to receive(:date)
         order.invoice_date
       end
     end
   end
 
-  describe 'checkout flow' do
+  describe "checkout flow" do
     let(:order) { create(:order_ready_to_complete) }
 
-    it 'creates a new invoice when completing the order' do
+    it "creates a new invoice when completing the order" do
       expect do
         order.complete!
       end.to change { Spree::BookkeepingDocument.count }
     end
 
-    it 'prevents #invoice_for_order from creating too many documents' do
+    it "prevents #invoice_for_order from creating too many documents" do
       order.complete!
       expect do
         order.invoice_for_order
@@ -39,7 +39,7 @@ RSpec.describe Spree::Order do
     end
   end
 
-  describe 'deprecated methods' do
+  describe "deprecated methods" do
     let(:order) { Spree::Order.new }
     let(:invoice) { Spree::BookkeepingDocument.new }
 
@@ -47,28 +47,34 @@ RSpec.describe Spree::Order do
       allow(order).to receive(:invoice).and_return(invoice)
     end
 
-    describe '#pdf_file' do
-      it 'calls invoice#pdf' do
+    around do |example|
+      ActiveSupport::Deprecation.silence do
+        example.run
+      end
+    end
+
+    describe "#pdf_file" do
+      it "calls invoice#pdf" do
         expect(invoice).to receive(:pdf)
         order.pdf_file
       end
     end
 
-    describe '#pdf_filename' do
-      it 'calls invoice#file_name' do
+    describe "#pdf_filename" do
+      it "calls invoice#file_name" do
         expect(invoice).to receive(:file_name)
         order.pdf_filename
       end
     end
 
-    describe '#pdf_file_path' do
-      it 'calls invoice#pdf_file_path' do
+    describe "#pdf_file_path" do
+      it "calls invoice#pdf_file_path" do
         expect(invoice).to receive(:pdf_file_path)
         order.pdf_file_path
       end
     end
 
-    describe 'destruction' do
+    describe "destruction" do
       let!(:order) { create :invoiceable_order }
 
       context "when destroyed" do
@@ -76,7 +82,7 @@ RSpec.describe Spree::Order do
           order.shipments.map(&:pend!)
         end
 
-        it 'also destroys the invoice' do
+        it "also destroys the invoice" do
           expect(Spree::BookkeepingDocument.count).not_to eq(0)
           order.destroy!
           expect(Spree::BookkeepingDocument.count).to eq(0)
