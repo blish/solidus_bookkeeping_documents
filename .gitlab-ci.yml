@@ -14,7 +14,7 @@ before_script:
   - gem install bundler --no-document
   - bundle -v
   - bundle check || bundle install -j $(nproc) --path vendor/bundle
-  - RAILS_ENV=test bundle exec rake test_app
+  - RAILS_ENV=test bundle exec rake extension:test_app
 
 rspec:
   script: bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
