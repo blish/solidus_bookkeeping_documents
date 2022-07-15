@@ -4,5 +4,7 @@ gemspec
 
 gem "rails", "~> 5.1"
 
-gem "solidus_core", github: "solidusio/solidus", branch: "v3.0"
-gem "solidus_backend", github: "solidusio/solidus", branch: "v3.0"
+ENV.fetch("SOLIDUS_VERSION", "v3.0").tap do |version|
+  gem "solidus_core", github: "solidusio/solidus", branch: version
+  gem "solidus_backend", github: "solidusio/solidus", branch: version
+end
