@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "solidus_core", [">= 2.11.0", "< 3.1"]
   s.add_runtime_dependency "solidus_backend", [">= 2.11.0", "< 3.1"]
+  s.add_runtime_dependency "solidus_support", ["~> 0.7"]
 
   s.add_development_dependency "bourbon", ">= 4", "< 5"
   s.add_development_dependency "simplecov", "~> 0.10"
