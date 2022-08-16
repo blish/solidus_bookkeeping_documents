@@ -1,15 +1,7 @@
-require 'bundler'
+require "bundler"
 Bundler::GemHelper.install_tasks
 
-require 'rspec/core/rake_task'
-require 'spree/testing_support/common_rake'
+require "solidus_dev_support/rake_tasks"
+SolidusDevSupport::RakeTasks.install
 
-RSpec::Core::RakeTask.new
-
-task default: :spec
-
-desc 'Generates a dummy app for testing'
-task :test_app do
-  ENV['LIB_NAME'] = 'solidus_bookkeeping_documents'
-  Rake::Task['common:test_app'].invoke
-end
+task default: "extension:specs"

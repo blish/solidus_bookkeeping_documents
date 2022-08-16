@@ -1,17 +1,17 @@
 FactoryBot.define do
   factory :invoiceable_order, class: Spree::Order do
     user
-    bill_address { build(:address, lastname: "Doe") }
-    ship_address { build(:address, lastname: "Doe") }
-    completed_at nil
+    bill_address { build(:address, name: "Jane Doe") }
+    ship_address { build(:address, name: "John Doe") }
+    completed_at { nil }
     email { user.email }
-    state "confirm"
+    state { "confirm" }
     store
 
     transient do
-      line_items_count 1
-      line_items_price 10
-      shipment_cost 100
+      line_items_count { 1 }
+      line_items_price { 10 }
+      shipment_cost { 100 }
     end
 
     after(:create) do |order, evaluator|

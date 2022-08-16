@@ -20,29 +20,20 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "deface", "~> 1.0"
   s.add_runtime_dependency "dragonfly", "~> 1.0"
 
-  ["~> 2.5"].tap do |solidus_version|
-    s.add_runtime_dependency "solidus_core", solidus_version
-    s.add_runtime_dependency "solidus_backend", solidus_version
-  end
+  s.add_runtime_dependency "solidus_core", [">= 2.11.0", "< 3.1"]
+  s.add_runtime_dependency "solidus_backend", [">= 2.11.0", "< 3.1"]
+  s.add_runtime_dependency "solidus_support", ["~> 0.7"]
 
-  s.add_development_dependency "capybara", "~> 2.4"
-  s.add_development_dependency "capybara-screenshot", ["~> 1.0"]
   s.add_development_dependency "bourbon", ">= 4", "< 5"
-  s.add_development_dependency "rspec-rails", "~> 3.3"
   s.add_development_dependency "simplecov", "~> 0.10"
-  s.add_development_dependency "database_cleaner", "~> 1.4"
   s.add_development_dependency "coffee-rails", "~> 4.1"
   s.add_development_dependency "sass-rails", "~> 5.0"
   s.add_development_dependency "pdf-inspector", "~> 1.2"
-  s.add_development_dependency "ffaker", ">= 1.32.1"
   s.add_development_dependency "guard-rspec", ">= 4.2.0"
   s.add_development_dependency "pry-rails", ">= 0.3.0"
-  s.add_development_dependency "rubocop", ">= 0.24.1"
-  s.add_development_dependency "factory_bot", "~> 4.10.0"
   s.add_development_dependency "sqlite3", "~> 1.4"
-  s.add_development_dependency "puma"
   s.add_development_dependency "listen", "~> 3.1.5"
   s.add_development_dependency "rake", "< 11.0"
   s.add_development_dependency "rails-controller-testing"
-  s.add_development_dependency "webdrivers", ["~> 4.0"]
+  s.add_development_dependency "solidus_dev_support"
 end

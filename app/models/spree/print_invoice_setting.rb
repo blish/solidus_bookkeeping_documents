@@ -1,22 +1,24 @@
+require "spree/preferences/persistable"
+
 module Spree
   class PrintInvoiceSetting < Spree::Base
     include Spree::Preferences::Persistable
 
-    preference :next_number,      :integer, default: -> { defaults[:next_number] }
-    preference :logo_path,        :string,  default: -> { defaults[:logo_path] }
-    preference :page_size,        :string,  default: -> { defaults[:page_size] }
-    preference :page_layout,      :string,  default: -> { defaults[:page_layout] }
-    preference :footer_left,      :string,  default: -> { defaults[:footer_left] }
-    preference :footer_right,     :string,  default: -> { defaults[:footer_right] }
-    preference :return_message,   :text,    default: -> { defaults[:return_message] }
-    preference :anomaly_message,  :text,    default: -> { defaults[:anomaly_message] }
-    preference :use_footer,       :boolean, default: -> { defaults[:use_footer] }
+    preference :next_number, :integer, default: -> { defaults[:next_number] }
+    preference :logo_path, :string, default: -> { defaults[:logo_path] }
+    preference :page_size, :string, default: -> { defaults[:page_size] }
+    preference :page_layout, :string, default: -> { defaults[:page_layout] }
+    preference :footer_left, :string, default: -> { defaults[:footer_left] }
+    preference :footer_right, :string, default: -> { defaults[:footer_right] }
+    preference :return_message, :text, default: -> { defaults[:return_message] }
+    preference :anomaly_message, :text, default: -> { defaults[:anomaly_message] }
+    preference :use_footer, :boolean, default: -> { defaults[:use_footer] }
     preference :use_page_numbers, :boolean, default: -> { defaults[:use_page_numbers] }
-    preference :logo_scale,       :integer, default: -> { defaults[:logo_scale] }
-    preference :font_face,        :string,  default: -> { defaults[:font_face] }
-    preference :font_size,        :integer, default: -> { defaults[:font_size] }
+    preference :logo_scale, :integer, default: -> { defaults[:logo_scale] }
+    preference :font_face, :string, default: -> { defaults[:font_face] }
+    preference :font_size, :integer, default: -> { defaults[:font_size] }
 
-    preference :invoice_number_prefix,        :string, default: -> { defaults[:invoice_number_prefix] }
+    preference :invoice_number_prefix, :string, default: -> { defaults[:invoice_number_prefix] }
     preference :packaging_slip_number_prefix, :string, default: -> { defaults[:packaging_slip_number_prefix] }
 
     class << self
