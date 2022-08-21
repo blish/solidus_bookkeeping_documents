@@ -28,12 +28,16 @@ module Spree
     end
 
     def firstname
-      name.split(/[[:space:]]/, 2).first
+      Spree::Address::Name.new(name).first_name
     end
 
+    deprecate firstname: :name
+
     def lastname
-      name.split(/[[:space:]]/, 2).last
+      Spree::Address::Name.new(name).last_name
     end
+
+    deprecate lastname: :name
 
     private
 
