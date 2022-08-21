@@ -1,6 +1,4 @@
-if File.exist?(Spree::PrintInvoiceSetting.invoice_logo_path)
-  pdf.image Spree::PrintInvoiceSetting.invoice_logo_path, vposition: :top, height: 40, scale: Spree::PrintInvoiceSetting.logo_scale
-end
+pdf.image Spree::PrintInvoiceSetting.invoice_logo_url, vposition: :top, height: 40, scale: Spree::PrintInvoiceSetting.logo_scale
 
 pdf.grid([0, 3], [1, 4]).bounding_box do
   pdf.text I18n.t(invoice.document_type, scope: "spree.print_invoice"), align: :right, style: :bold, size: 18

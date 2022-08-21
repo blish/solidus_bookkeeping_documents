@@ -37,12 +37,23 @@ RSpec.describe Spree::PrintInvoiceSetting do
     end
   end
 
-  describe "#invoice_logo_path" do
-    let(:logo_path) { Rails.root.join("app", "assets", "images", Spree::PrintInvoiceSetting.logo_path) }
+  describe "#invoice_logo_url" do
+    context "when logo is stored locally" do
+      it "returns the local url" do
+        expect(subject.invoice_logo_url).to eq(logo_path)
+        expect(Spree::PrintInvoiceSetting.invoice_logo_url).to eq(logo_path)
+      end
+    end
 
-    it "is set" do
-      expect(subject.invoice_logo_path).to eq(logo_path)
-      expect(Spree::PrintInvoiceSetting.invoice_logo_path).to eq(logo_path)
+    context "when logo is stored on S3" do
+      before do
+        expect(invoice_logo.app.datastore).to receive(:instance_of?).with(Dragonfly::S3DataStore).and_return(true)
+      end
+
+      it "returns the remote url" do
+        expect(subject.invoice_logo_url).to eq(logo_path)
+        expect(Spree::PrintInvoiceSetting.invoice_logo_url).to eq(logo_path)
+      end
     end
   end
 

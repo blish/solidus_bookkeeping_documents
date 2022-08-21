@@ -4,6 +4,8 @@ module Spree
   class PrintInvoiceSetting < Spree::Base
     include Spree::Preferences::Persistable
 
+    extend Dragonfly::Model
+
     preference :next_number, :integer, default: -> { defaults[:next_number] }
     preference :logo_path, :string, default: -> { defaults[:logo_path] }
     preference :page_size, :string, default: -> { defaults[:page_size] }
@@ -20,6 +22,8 @@ module Spree
 
     preference :invoice_number_prefix, :string, default: -> { defaults[:invoice_number_prefix] }
     preference :packaging_slip_number_prefix, :string, default: -> { defaults[:packaging_slip_number_prefix] }
+
+    dragonfly_accessor :invoice_logo, app: :solidus_bookkeeping_documents
 
     class << self
       attr_accessor :defaults
@@ -44,12 +48,23 @@ module Spree
         (7..14).to_a
       end
 
-      def invoice_logo_path
-        Rails.root.join("app", "assets", "images", logo_path)
+      def invoice_logo_url
+        if invoice_logo.app.datastore.instance_of?(Dragonfly::S3DataStore)
+          invoice_logo.remote_url
+        else
+          invoice_logo.url
+        end
       end
+
+      alias_method :invoice_logo_path, :invoice_logo_url
 
       def logo_scaling
         logo_scale.to_f / 100
+      end
+
+      def invoice_logo
+        binding.pry
+        persisted_preferences&.invoice_logo
       end
 
       private
@@ -67,7 +82,7 @@ module Spree
         end
       end
 
-      def respond_to_missing(*args)
+      def respond_to_missing?(*args)
         persisted_preferences&.has_preference?(args.first) || super
       end
 
