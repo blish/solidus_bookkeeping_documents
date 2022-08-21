@@ -1,4 +1,4 @@
-image: "circleci/ruby:2.7-node-browsers-legacy"
+image: "circleci/ruby:3.0-node-browsers-legacy"
 
 cache:
   key:
