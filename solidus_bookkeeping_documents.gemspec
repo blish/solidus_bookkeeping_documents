@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version = SolidusBookkeepingDocuments::VERSION
   s.summary = "Print invoices and packing slips from Solidus Orders"
   s.description = s.summary
-  s.required_ruby_version = [">= 2.5", "< 3.0"]
+  s.required_ruby_version = [">= 2.5", "< 3.1"]
 
   s.authors = ["Thomas von Deyen", "Martin Meyerhoff"]
   s.email = "hello@blish.cloud"
@@ -32,8 +32,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "guard-rspec", ">= 4.2.0"
   s.add_development_dependency "pry-rails", ">= 0.3.0"
   s.add_development_dependency "sqlite3", "~> 1.4"
-  s.add_development_dependency "listen", "~> 3.1.5"
-  s.add_development_dependency "rake", "< 11.0"
+  s.add_development_dependency "listen"
+  s.add_development_dependency "rake"
   s.add_development_dependency "rails-controller-testing"
   s.add_development_dependency "solidus_dev_support"
 end
