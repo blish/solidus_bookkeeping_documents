@@ -5,9 +5,10 @@ module Spree
     PERSISTED_ATTRS = [
       :firstname,
       :lastname,
+      :name,
       :email,
       :total,
-      :number
+      :number,
     ]
 
     # Spree::BookkeepingDocument cares about creating PDFs. Whenever it needs to know
@@ -19,7 +20,7 @@ module Spree
     belongs_to :printable, polymorphic: true
     validates :printable, :template, presence: true
     validates *PERSISTED_ATTRS, presence: true, if: -> { self.persisted? }
-    scope :invoices, -> { where(template: 'invoice') }
+    scope :invoices, -> { where(template: "invoice") }
 
     # Store next document number
     before_create :store_next_document_number
@@ -91,6 +92,7 @@ module Spree
       return attachment.url unless attachment.app.datastore.class.name == "Dragonfly::S3DataStore"
       attachment.remote_url
     end
+
     alias_method :file_path, :file_url
 
     # Renders the prawn template for give template name in context of ActionView.
@@ -106,7 +108,7 @@ module Spree
         ActionController::Base.view_paths,
         {
           doc: self,
-          printable: self.printable
+          printable: self.printable,
         }
       ).render(template: "#{template_name}.pdf.prawn")
     end
@@ -122,7 +124,7 @@ module Spree
     end
 
     def formatted_number
-      if (Object.const_get('::Spree::PrintInvoice::NumberFormatter') rescue false)
+      if (Object.const_get("::Spree::PrintInvoice::NumberFormatter") rescue false)
         Spree::PrintInvoice::NumberFormatter.new(document_number_prefix, document_number).to_s
       else
         "#{document_number_prefix}#{document_number}"
@@ -141,7 +143,7 @@ module Spree
     def number_scope
       return unless number_prefix
       {
-        document_number_prefix: number_prefix
+        document_number_prefix: number_prefix,
       }
     end
 

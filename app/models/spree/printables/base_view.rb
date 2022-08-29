@@ -14,24 +14,20 @@ module Spree
       @document = document
     end
 
-    def firstname
-      raise NotImplementedError, 'Please implement firstname'
-    end
-
-    def lastname
-      raise NotImplementedError, 'Please implement lastname'
+    def name
+      raise NotImplementedError, "Please implement name"
     end
 
     def email
-      raise NotImplementedError, 'Please implement email'
+      raise NotImplementedError, "Please implement email"
     end
 
     def total
-      raise NotImplementedError, 'Please implement total'
+      raise NotImplementedError, "Please implement total"
     end
 
     def number
-      raise NotImplementedError, 'Please implement number'
+      raise NotImplementedError, "Please implement number"
     end
   end
 end

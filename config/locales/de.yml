@@ -8,6 +8,7 @@ de:
     print_invoice:
       document_type: Dokumentart
       number: Nummer
+      Name: Name
       firstname: Vorname
       lastname: Nachname
       email: E-Mail
@@ -52,8 +53,8 @@ de:
       vat: MwSt. nicht anwendbar
       pdf_legend: PDF-Grundeinstellungen
       invoice_slip_legend: PDF-Inhaltseinstellungen
-      invoice_number: 'Rechnungsnummer: %{number}'
-      invoice_date: 'Rechnungsdatum: %{date}'
+      invoice_number: "Rechnungsnummer: %{number}"
+      invoice_date: "Rechnungsdatum: %{date}"
   activerecord:
     models:
       spree/bookkeeping_document:

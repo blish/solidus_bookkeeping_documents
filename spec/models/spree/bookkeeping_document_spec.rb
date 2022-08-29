@@ -14,6 +14,7 @@ RSpec.describe Spree::BookkeepingDocument do
 
     it { is_expected.to respond_to(:date) }
     it { is_expected.to respond_to(:number) }
+    it { is_expected.to respond_to(:name) }
     it { is_expected.to respond_to(:firstname) }
     it { is_expected.to respond_to(:lastname) }
     it { is_expected.to respond_to(:email) }
