@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.1.0
+
+- Add name to spree_bookkeeping_documents
+- Wrap spree initializer in config.to_prepare hook
+- Run Solidus 3 specs with Ruby 3
+- Allow Ruby 3.0
+- Use Spree::Address::Name for invoice view
+
 ## v3.0.0
 
 - Use dynamic attributes in factories
