@@ -32,13 +32,18 @@ RSpec.describe Spree::BookkeepingDocument do
   end
 
   describe "#pdf" do
-    subject { Spree::BookkeepingDocument.create(printable: printable, template: "invoice") }
+    subject(:document) { Spree::BookkeepingDocument.create(printable: printable, template: "invoice") }
 
     context "with an order" do
       let(:printable) { create :invoiceable_order }
 
       it "creates a PDF" do
         expect(subject.pdf).to match(/%PDF-1.\d/)
+      end
+
+      it "PDF has correct filename" do
+        subject.pdf
+        expect(document.attachment.name).to match("#{document.number}.pdf")
       end
     end
 
@@ -48,6 +53,16 @@ RSpec.describe Spree::BookkeepingDocument do
       it "raises error" do
         expect { subject.pdf }.to raise_error(ActiveRecord::RecordInvalid)
       end
+    end
+  end
+
+  describe "#file_name" do
+    let(:document) { Spree::BookkeepingDocument.new }
+
+    subject(:file_name) { document.file_name }
+
+    it "is document number with PDF extension" do
+      is_expected.to eq("#{document.number}.pdf")
     end
   end
 
