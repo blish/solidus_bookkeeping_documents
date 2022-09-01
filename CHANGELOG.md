@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.3.0
+
+- Use correct address for templates
+- Remove firstname and lastname from base views
+- Add deprecation class
+- Remove extension from Dragonfly url
+- Use Rails credentials instead of secrets
+- Use document number as pdf file_name
+
 ## v3.2.0
 
 - Use number formatting in admin documents table
