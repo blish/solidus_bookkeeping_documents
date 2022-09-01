@@ -53,19 +53,13 @@
         </div>
 
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="field">
-              <%= label_tag :q_firstname_start, t(:first_name_begins_with, scope: :spree) %>
-              <%= f.text_field :firstname_start, class: 'form-control' %>
+              <%= label_tag :q_name_cont, t(:name_contains, scope: :spree) %>
+              <%= f.text_field :name_cont, class: 'form-control' %>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="field">
-              <%= label_tag :q_lastname_start, t(:last_name_begins_with, scope: :spree) %>
-              <%= f.text_field :lastname_start, class: 'form-control' %>
-            </div>
-          </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="field">
               <%= label_tag :q_email_cont, t(:email, scope: :spree) %>
               <%= f.text_field :email_cont, class: 'form-control js-filterable' %>
