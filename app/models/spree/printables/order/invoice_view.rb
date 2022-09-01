@@ -24,7 +24,7 @@ module Spree
     end
 
     def name
-      printable.tax_address.name
+      printable.bill_address.name
     end
 
     private
