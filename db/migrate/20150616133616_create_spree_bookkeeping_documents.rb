@@ -1,29 +1,21 @@
-class CreateSpreeBookkeepingDocuments < ActiveRecord::Migration[4.2]
-  def up
+class CreateSpreeBookkeepingDocuments < ActiveRecord::Migration[6.0]
+  def change
     create_table :spree_bookkeeping_documents do |t|
-      t.references :printable, polymorphic: true
+      t.references :printable, polymorphic: true, index: { name: "spree_bookkeeping_documents_printable_idx" }
       t.string :template
       t.string :number
-      t.string :firstname
-      t.string :lastname
+      t.string :name, index: true
       t.string :email
       t.decimal :total, precision: 12, scale: 2
+      t.integer :document_number
+      t.string :document_number_prefix
+      t.string :attachment_uid
+      t.string :attachment_name
+      t.string :attachment_size
 
       t.timestamps null: false
     end
-
-    Spree::Order.complete.where.not(invoice_number: nil).find_each do |order|
-      order.pdfs.create(
-        template: "invoice",
-        number: order.invoice_number,
-        created_at: order.completed_at.to_date,
-      )
-    end
-
-    remove_column :spree_orders, :invoice_number, :string
-  end
-
-  def down
-    raise ActiveRecord::IrreversibleMigration
+    add_index :spree_bookkeeping_documents, [:document_number, :document_number_prefix],
+      unique: true, name: "spree_bookkeeping_documents_document_number_idx"
   end
 end
