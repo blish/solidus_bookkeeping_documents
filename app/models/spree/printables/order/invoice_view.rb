@@ -27,18 +27,6 @@ module Spree
       printable.tax_address.name
     end
 
-    def firstname
-      Spree::Address::Name.new(name).first_name
-    end
-
-    deprecate firstname: :name, deprecator: SolidusBookkeepingDocuments::Deprecation
-
-    def lastname
-      Spree::Address::Name.new(name).last_name
-    end
-
-    deprecate lastname: :name, deprecator: SolidusBookkeepingDocuments::Deprecation
-
     private
 
     def all_adjustments
