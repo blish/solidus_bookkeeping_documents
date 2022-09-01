@@ -24,20 +24,8 @@ module Spree
     end
 
     def name
-      printable.tax_address.name
+      printable.bill_address.name
     end
-
-    def firstname
-      Spree::Address::Name.new(name).first_name
-    end
-
-    deprecate firstname: :name
-
-    def lastname
-      Spree::Address::Name.new(name).last_name
-    end
-
-    deprecate lastname: :name
 
     private
 

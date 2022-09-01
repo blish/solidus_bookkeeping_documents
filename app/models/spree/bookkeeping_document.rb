@@ -3,8 +3,6 @@ module Spree
     extend Dragonfly::Model
 
     PERSISTED_ATTRS = [
-      :firstname,
-      :lastname,
       :name,
       :email,
       :total,

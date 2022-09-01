@@ -23,24 +23,28 @@ module Spree::PrintInvoice::OrderDecorator
   # ones on Spree::BookkeepingDocument
   #
   def pdf_file
-    ActiveSupport::Deprecation.warn("This API has changed: Please use order.invoice.pdf instead")
     invoice.pdf
   end
 
+  deprecate pdf_file: "Please use order.invoice.pdf instead", deprecator: SolidusBookkeepingDocuments::Deprecation
+
   def pdf_filename
-    ActiveSupport::Deprecation.warn("This API has changed: Please use order.invoice.file_name instead")
     invoice.file_name
   end
 
+  deprecate pdf_filename: "Please use order.invoice.file_name instead", deprecator: SolidusBookkeepingDocuments::Deprecation
+
   def pdf_file_path
-    ActiveSupport::Deprecation.warn("This API has changed: Please use order.invoice.pdf_file_path instead")
     invoice.pdf_file_path
   end
 
+  deprecate pdf_file_path: "Please use order.invoice.pdf_file_path instead", deprecator: SolidusBookkeepingDocuments::Deprecation
+
   def pdf_storage_path(template)
-    ActiveSupport::Deprecation.warn("This API has changed: Please use order.{packaging_slip, invoice}.pdf_file_path instead")
     bookkeeping_documents.find_by!(template: template).file_path
   end
+
+  deprecate pdf_storage_path: "Please use order.{packaging_slip, invoice}.pdf_file_path instead", deprecator: SolidusBookkeepingDocuments::Deprecation
 
   def invoice_for_order
     # Under some conditions this method could be called more than once.
