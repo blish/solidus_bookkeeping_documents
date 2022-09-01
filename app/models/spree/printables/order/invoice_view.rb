@@ -31,13 +31,13 @@ module Spree
       Spree::Address::Name.new(name).first_name
     end
 
-    deprecate firstname: :name
+    deprecate firstname: :name, deprecator: SolidusBookkeepingDocuments::Deprecation
 
     def lastname
       Spree::Address::Name.new(name).last_name
     end
 
-    deprecate lastname: :name
+    deprecate lastname: :name, deprecator: SolidusBookkeepingDocuments::Deprecation
 
     private
 

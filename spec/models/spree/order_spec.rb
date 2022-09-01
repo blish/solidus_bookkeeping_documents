@@ -48,7 +48,7 @@ RSpec.describe Spree::Order do
     end
 
     around do |example|
-      ActiveSupport::Deprecation.silence do
+      SolidusBookkeepingDocuments::Deprecation.silence do
         example.run
       end
     end
