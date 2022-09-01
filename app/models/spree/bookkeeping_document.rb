@@ -83,7 +83,7 @@ module Spree
     # = The PDF file_name
     #
     def file_name
-      @_file_name ||= "#{template}-D#{id}-N#{number}.pdf"
+      @_file_name ||= "#{number}.pdf"
     end
 
     # = PDF file path
@@ -177,6 +177,7 @@ module Spree
     def send_or_create_pdf!
       unless attachment_stored?
         self.attachment = render_pdf
+        self.attachment.name = file_name
         save!
       end
 

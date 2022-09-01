@@ -12,8 +12,8 @@
 
 Dragonfly.app(:solidus_bookkeeping_documents).configure do
   dragonfly_url nil
-  secret Rails.application.secrets.secret_key_base
-  url_format "/bookkeeping_documents/:job/:name.:ext"
+  secret Rails.application.credentials.secret_key_base
+  url_format "/bookkeeping_documents/:job/:name"
 
   datastore :file,
     root_path: Rails.root.join('uploads/bookkeeping_documents').to_s,
