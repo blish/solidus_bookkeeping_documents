@@ -15,10 +15,10 @@
     <tr data-hook="admin_printables_index_rows" class="<%= cycle('odd', 'even') %>">
       <td><%= l bookkeeping_document.created_at.to_date %></td>
       <td><%= t(bookkeeping_document.document_type, scope: [:spree, :print_invoice]) %></td>
-      <td><%= bookkeeping_document.number %></td>
+      <td class="number"><%= bookkeeping_document.number %></td>
       <td><%= bookkeeping_document.name %></td>
       <td><%= bookkeeping_document.email %></td>
-      <td><%= bookkeeping_document.display_total.to_html %></td>
+      <td class="number"><%= bookkeeping_document.display_total.to_html %></td>
       <td class='actions' data-hook="admin_orders_index_row_actions">
         <%= link_to_with_icon "file", "", admin_bookkeeping_document_path(bookkeeping_document, format: :pdf), title: "show_bookkeeping_document_#{bookkeeping_document.id}", no_text: true %>
       </td>
