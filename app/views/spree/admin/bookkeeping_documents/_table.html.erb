@@ -4,8 +4,7 @@
       <th><%= sort_link @search, :created_at, t(:date, scope: [:spree, :print_invoice]) %></th>
       <th><%= t(:document_type, scope: [:spree, :print_invoice]) %></th>
       <th><%= sort_link @search, :number, t(:number, scope: [:spree, :print_invoice]) %></th>
-      <th><%= sort_link @search, :firstname, t(:firstname, scope: [:spree, :print_invoice]) %></th>
-      <th><%= sort_link @search, :lastname, t(:lastname, scope: [:spree, :print_invoice]) %></th>
+      <th><%= sort_link @search, :name, t(:name, scope: [:spree, :print_invoice]) %></th>
       <th><%= sort_link @search, :email, t(:email, scope: [:spree, :print_invoice]) %></th>
       <th><%= sort_link @search, :total, t(:total, scope: [:spree, :print_invoice]) %></th>
       <th data-hook="admin_orders_index_header_actions" class="actions"></th>
@@ -17,8 +16,7 @@
       <td><%= l bookkeeping_document.created_at.to_date %></td>
       <td><%= t(bookkeeping_document.document_type, scope: [:spree, :print_invoice]) %></td>
       <td><%= bookkeeping_document.number %></td>
-      <td><%= bookkeeping_document.firstname %></td>
-      <td><%= bookkeeping_document.lastname %></td>
+      <td><%= bookkeeping_document.name %></td>
       <td><%= bookkeeping_document.email %></td>
       <td><%= bookkeeping_document.display_total.to_html %></td>
       <td class='actions' data-hook="admin_orders_index_row_actions">
