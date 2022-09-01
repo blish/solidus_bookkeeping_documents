@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.2.0
+
+- Use number formatting in admin documents table
+- Use name in admin documents table
+
 ## v3.1.0
 
 - Add name to spree_bookkeeping_documents
