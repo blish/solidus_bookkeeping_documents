@@ -102,13 +102,13 @@ module Spree
     # Assigns +@doc+ instance variable
     #
     def render_pdf
-      ActionView::Base.new(
-        ActionController::Base.view_paths,
-        {
+      ApplicationController.render(
+        assigns: {
           doc: self,
-          printable: self.printable,
-        }
-      ).render(template: "#{template_name}.pdf.prawn")
+          printable: printable,
+        },
+        template: "#{template_name}.pdf.prawn",
+      )
     end
 
     # Get document number from database and increments it
