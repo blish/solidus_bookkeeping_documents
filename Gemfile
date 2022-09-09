@@ -2,9 +2,13 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "rails", "~> 6.0.5"
+solidus_version = ENV.fetch("SOLIDUS_VERSION", "v3.0")
 
-ENV.fetch("SOLIDUS_VERSION", "v3.0").tap do |version|
-  gem "solidus_core", github: "solidusio/solidus", branch: version
-  gem "solidus_backend", github: "solidusio/solidus", branch: version
+if solidus_version == "v2.11"
+  gem "rails", "~> 6.0.5"
+else
+  gem "rails", "~> 6.1.5"
 end
+
+gem "solidus_core", github: "solidusio/solidus", branch: solidus_version
+gem "solidus_backend", github: "solidusio/solidus", branch: solidus_version
