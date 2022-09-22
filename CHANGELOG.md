@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.4.0
+
+- Allow Solidus 3.1
+- Test Rails 6.1 and Rails 6.0
+- Create a country for each order address
+- Use ActionController::Renderer to render PDFs from model
+
 ## v3.3.0
 
 - Use correct address for templates
