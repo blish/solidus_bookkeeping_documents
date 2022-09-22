@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gemspec
 
-solidus_version = ENV.fetch("SOLIDUS_VERSION", "v3.0")
+solidus_version = ENV.fetch("SOLIDUS_VERSION", "v3.1")
 
 if solidus_version == "v2.11"
   gem "rails", "~> 6.0.5"

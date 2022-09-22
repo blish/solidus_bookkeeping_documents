@@ -41,3 +41,17 @@ Test Solidus 3.0:
       - spec/dummy/tmp/capybara
     reports:
       junit: rspec.xml
+
+Test Solidus 3.1:
+  image: "circleci/ruby:3.0-node-browsers-legacy"
+  variables:
+    SOLIDUS_VERSION: v3.1
+  script: bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
+  coverage: '/\((\d+\.\d+)%\) covered./'
+  artifacts:
+    when: always
+    paths:
+      - rspec.xml
+      - spec/dummy/tmp/capybara
+    reports:
+      junit: rspec.xml
