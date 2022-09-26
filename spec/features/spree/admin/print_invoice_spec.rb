@@ -1,4 +1,4 @@
-RSpec.feature 'Admin print invoice feature' do
+RSpec.feature "Admin print invoice feature" do
   stub_authorization!
 
   let!(:order) { create(:invoiceable_order) }
@@ -10,26 +10,33 @@ RSpec.feature 'Admin print invoice feature' do
     end
   end
 
-  context 'with pdf file already present' do
-    let(:pdf_file_path) { 'spec/fixtures/invoice.pdf' }
+  scenario "shows order number on documents list" do
+    visit spree.admin_bookkeeping_documents_path
+    within('[data-hook="admin_printables_index_rows"]') do
+      expect(page).to have_link order.number
+    end
+  end
+
+  context "with pdf file already present" do
+    let(:pdf_file_path) { "spec/fixtures/invoice.pdf" }
 
     before do
       allow_any_instance_of(Spree::BookkeepingDocument).to receive(:pdf).and_return("")
     end
 
-    scenario 'sends the stored file.' do
+    scenario "sends the stored file." do
       visit spree.admin_bookkeeping_document_path(id: order.invoice.id, format: :pdf)
       expect(page.body).to eq(IO.binread(pdf_file_path))
     end
   end
 
-  context 'with pdf file not yet present' do
-    scenario 'sends the stored file.' do
+  context "with pdf file not yet present" do
+    scenario "sends the stored file." do
       visit spree.admin_bookkeeping_document_path(id: order.invoice.id, format: :pdf)
       order.reload
       expect(page.body).to eq(
         IO.binread(
-          Rails.root.join('..', '..', 'spec', 'dummy', 'uploads', 'bookkeeping_documents', "#{order.invoice.attachment_uid}")
+          Rails.root.join("..", "..", "spec", "dummy", "uploads", "bookkeeping_documents", "#{order.invoice.attachment_uid}")
         )
       )
     end

@@ -1,21 +1,34 @@
 <table>
   <thead>
     <tr data-hook="printables_index_headers">
-      <th><%= sort_link @search, :created_at, t(:date, scope: [:spree, :print_invoice]) %></th>
-      <th><%= t(:document_type, scope: [:spree, :print_invoice]) %></th>
-      <th><%= sort_link @search, :number, t(:number, scope: [:spree, :print_invoice]) %></th>
-      <th><%= sort_link @search, :name, t(:name, scope: [:spree, :print_invoice]) %></th>
-      <th><%= sort_link @search, :email, t(:email, scope: [:spree, :print_invoice]) %></th>
-      <th><%= sort_link @search, :total, t(:total, scope: [:spree, :print_invoice]) %></th>
+      <th><%= sort_link @search, :created_at %></th>
+      <th><%= Spree::BookkeepingDocument.human_attribute_name(:document_type) %></th>
+      <th><%= sort_link @search, :number %></th>
+      <th><%= Spree::BookkeepingDocument.human_attribute_name(:order) %></th>
+      <th><%= sort_link @search, :name %></th>
+      <th><%= sort_link @search, :email %></th>
+      <th><%= sort_link @search, :total %></th>
       <th data-hook="admin_orders_index_header_actions" class="actions"></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody data-hook="admin_printables_index_rows">
   <% @bookkeeping_documents.each do |bookkeeping_document| %>
-    <tr data-hook="admin_printables_index_rows" class="<%= cycle('odd', 'even') %>">
+    <tr class="<%= cycle('odd', 'even') %>">
       <td><%= l bookkeeping_document.created_at.to_date %></td>
       <td><%= t(bookkeeping_document.document_type, scope: [:spree, :print_invoice]) %></td>
       <td class="number"><%= bookkeeping_document.number %></td>
+      <td class="number">
+        <%=
+          case bookkeeping_document.printable
+          when Spree::Order
+            link_to bookkeeping_document.printable.number, spree.edit_admin_order_path(bookkeeping_document.printable)
+          when Spree::Shipment
+            link_to bookkeeping_document.printable.number, spree.edit_admin_order_path(bookkeeping_document.printable.order)
+          else
+            bookkeeping_document.printable&.number
+          end
+        %>
+      </td>
       <td><%= bookkeeping_document.name %></td>
       <td><%= bookkeeping_document.email %></td>
       <td class="number"><%= bookkeeping_document.display_total.to_html %></td>
