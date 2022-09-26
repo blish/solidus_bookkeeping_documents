@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.4.1
+
+- Show link to order on documents list
+
 ## v3.4.0
 
 - Allow Solidus 3.1
