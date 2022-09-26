@@ -8,7 +8,7 @@ module Spree
       def show
         respond_with(@bookkeeping_document) do |format|
           format.pdf do
-            send_data @bookkeeping_document.pdf, filename: @bookkeeping_document.file_name, type: 'application/pdf', disposition: 'inline'
+            send_data @bookkeeping_document.pdf, filename: @bookkeeping_document.file_name, type: "application/pdf", disposition: "inline"
           end
         end
       end
@@ -18,7 +18,7 @@ module Spree
         params[:q] ||= {}
         params[:q][:s] ||= "created_at desc"
         @search = Spree::BookkeepingDocument.ransack(params[:q])
-        @bookkeeping_documents = @search.result
+        @bookkeeping_documents = @search.result.includes(:printable)
         @bookkeeping_documents = @bookkeeping_documents.where(printable: @order) if order_focused?
         @bookkeeping_documents = @bookkeeping_documents.page(params[:page] || 1).per(10)
       end

@@ -6,14 +6,7 @@ de:
         documents: Dokumente
         print_invoice_settings: Rechnungsdruck-Einstellungen
     print_invoice:
-      document_type: Dokumentart
-      number: Nummer
-      Name: Name
-      firstname: Vorname
-      lastname: Nachname
-      email: E-Mail
       date: Datum
-      total: Summe
       documents: Dokumente
       documents_for_order: "Dokumente für Bestellung Nr. %{order_number}"
       buttons:
@@ -63,3 +56,9 @@ de:
     attributes:
       spree/bookkeeping_document:
         created_at: Erstellt am
+        document_type: Dokumentart
+        email: E-Mail
+        name: Name
+        number: Nummer
+        order: Bestellung
+        total: Summe
