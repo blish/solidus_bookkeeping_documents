@@ -13,6 +13,17 @@ Gem::Specification.new do |s|
   s.homepage = "https://gitlab.com/blish/solidus_bookkeeping_documents"
   s.license = "BSD-3"
 
+  if s.respond_to?(:metadata)
+    s.metadata = {
+      "allowed_push_host" => "https://rubygems.pkg.github.com/blish-cloud",
+      "changelog_uri" => "https://gitlab.com/blish/gems/solidus_bookkeeping_documents/-/raw/main/CHANGELOG.md",
+      "source_code_uri" => "https://gitlab.com/blish/gems/solidus_bookkeeping_documents/-/tree/main",
+      "bug_tracker_uri" => "https://gitlab.com/blish/gems/solidus_bookkeeping_documents/-/issues",
+    }
+  else
+    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
+  end
+
   s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec/|bin}) }
   s.test_files = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^spec/}) }
 
