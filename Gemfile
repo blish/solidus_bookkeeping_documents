@@ -12,3 +12,8 @@ gem "solidus_backend", github: "solidusio/solidus", branch: solidus_version
 if solidus_version == "v3.2"
   gem "solidus_frontend", "~> 3.2"
 end
+
+# Remove after https://github.com/solidusio/solidus/pull/4734 has been merged
+if RUBY_VERSION.match?(/^3\.1/)
+  gem "mail", [">= 2.8.0.rc1", "< 3"]
+end
