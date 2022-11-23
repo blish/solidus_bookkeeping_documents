@@ -14,20 +14,6 @@ before_script:
   - bundle check || bundle install -j $(nproc) --path vendor/bundle
   - RAILS_ENV=test bundle exec rake extension:test_app
 
-Test Solidus 2.11:
-  image: "circleci/ruby:2.7-node-browsers-legacy"
-  variables:
-    SOLIDUS_VERSION: v2.11
-  script: bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
-  coverage: '/\((\d+\.\d+)%\) covered./'
-  artifacts:
-    when: always
-    paths:
-      - rspec.xml
-      - spec/dummy/tmp/capybara
-    reports:
-      junit: rspec.xml
-
 Test Solidus 3.0:
   image: "circleci/ruby:3.0-node-browsers-legacy"
   variables:
@@ -46,6 +32,20 @@ Test Solidus 3.1:
   image: "circleci/ruby:3.0-node-browsers-legacy"
   variables:
     SOLIDUS_VERSION: v3.1
+  script: bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
+  coverage: '/\((\d+\.\d+)%\) covered./'
+  artifacts:
+    when: always
+    paths:
+      - rspec.xml
+      - spec/dummy/tmp/capybara
+    reports:
+      junit: rspec.xml
+
+Test Solidus 3.2:
+  image: "circleci/ruby:3.0-node-browsers-legacy"
+  variables:
+    SOLIDUS_VERSION: v3.2
   script: bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
   coverage: '/\((\d+\.\d+)%\) covered./'
   artifacts:

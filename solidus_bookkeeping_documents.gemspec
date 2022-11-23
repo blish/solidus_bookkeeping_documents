@@ -31,8 +31,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "deface", "~> 1.0"
   s.add_runtime_dependency "dragonfly", "~> 1.0"
 
-  s.add_runtime_dependency "solidus_core", [">= 2.11.0", "< 3.2"]
-  s.add_runtime_dependency "solidus_backend", [">= 2.11.0", "< 3.2"]
+  s.add_runtime_dependency "solidus_core", [">= 2.11.0", "< 3.3"]
+  s.add_runtime_dependency "solidus_backend", [">= 2.11.0", "< 3.3"]
   s.add_runtime_dependency "solidus_support", ["~> 0.7"]
 
   s.add_development_dependency "bourbon", ">= 4", "< 5"
