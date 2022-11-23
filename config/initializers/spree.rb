@@ -1,14 +1,6 @@
 Rails.application.config.to_prepare do
   Spree::Backend::Config.configure do |config|
-    config.menu_items << config.class::MenuItem.new(
-      [:documents, :bookkeeping_documents, :bookkeeping_exports],
-      :file,
-      url: "/admin/bookkeeping_documents",
-      condition: -> {
-        can?(:admin, :bookkeeping_documents)
-      },
-      partial: "spree/admin/shared/sub_menu/documents",
-    )
+    config.menu_items |= Spree::PrintInvoice.solidus_menu_items
   end
 
   Spree::PrintInvoiceSetting.defaults = {
