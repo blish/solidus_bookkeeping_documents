@@ -8,3 +8,7 @@ gem "rails", "~> 6.1.5"
 
 gem "solidus_core", github: "solidusio/solidus", branch: solidus_version
 gem "solidus_backend", github: "solidusio/solidus", branch: solidus_version
+
+if solidus_version == "v3.2"
+  gem "solidus_frontend", "~> 3.2"
+end
