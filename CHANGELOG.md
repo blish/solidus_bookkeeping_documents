@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.5.0
+
+- Fix solidus admin tab behavior
+- Allow Ruby 3.1
+- Allow Solidus 3.2
+
 ## v3.4.1
 
 - Show link to order on documents list
