@@ -138,6 +138,48 @@ See corresponding [guidelines][1]
 
 ---
 
+## Releasing
+
+We use [`gem-release`](https://github.com/svenfuchs/gem-release) for releasing the gem.
+
+### Install `gem-release`
+
+_if not done yet_
+
+```
+gem install gem-release
+```
+
+### Bump the version
+
+Use `minor` for new features, `patch` for bug fixes.
+
+```
+gem bump --version minor|patch
+```
+
+### Update the changelog
+
+Manually update the CHANGELOG.md file and amend the changes.
+
+```
+git commit -a --amend --no-edit
+```
+
+Push the changes
+
+```
+git push
+```
+
+### Release the gem
+
+Make sure you have a valid GitHub token in your `~/.gem/credentials` file.
+
+```
+gem release
+```
+
 ## License
 
 Copyright (c) 2020 [Blish][2], and other [contributors][3], released under the [New BSD License][4]

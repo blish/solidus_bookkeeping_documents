@@ -1,0 +1,8 @@
+bump:
+  commit: true
+  push: false
+release:
+  tag: true
+  push: true
+  key: github
+  host: https://rubygems.pkg.github.com/blish-cloud
