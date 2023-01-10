@@ -30,21 +30,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "prawn-rails", "~> 1.0"
   s.add_runtime_dependency "deface", "~> 1.0"
   s.add_runtime_dependency "dragonfly", "~> 1.0"
-
   s.add_runtime_dependency "solidus_core", [">= 2.11.0", "< 3.3"]
   s.add_runtime_dependency "solidus_backend", [">= 2.11.0", "< 3.3"]
   s.add_runtime_dependency "solidus_support", ["~> 0.7"]
-
-  s.add_development_dependency "bourbon", ">= 4", "< 5"
-  s.add_development_dependency "simplecov", "~> 0.10"
-  s.add_development_dependency "coffee-rails", "~> 4.1"
-  s.add_development_dependency "sass-rails", "~> 5.0"
-  s.add_development_dependency "pdf-inspector", "~> 1.2"
-  s.add_development_dependency "guard-rspec", ">= 4.2.0"
-  s.add_development_dependency "pry-rails", ">= 0.3.0"
-  s.add_development_dependency "sqlite3", "~> 1.4"
-  s.add_development_dependency "listen"
-  s.add_development_dependency "rake"
-  s.add_development_dependency "rails-controller-testing"
-  s.add_development_dependency "solidus_dev_support"
 end

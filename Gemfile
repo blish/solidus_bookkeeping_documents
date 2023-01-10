@@ -17,3 +17,16 @@ end
 if RUBY_VERSION.match?(/^3\.1/)
   gem "mail", [">= 2.8.0.rc1", "< 3"]
 end
+
+gem "listen"
+gem "pry-rails", ">= 0.3.0"
+gem "sqlite3", "~> 1.4"
+gem "sassc-rails", "~> 2.1"
+gem "coffee-rails", "~> 4.1"
+
+group :test do
+  gem "simplecov", "~> 0.10"
+  gem "pdf-inspector", "~> 1.2"
+  gem "rails-controller-testing"
+  gem "solidus_dev_support"
+end
