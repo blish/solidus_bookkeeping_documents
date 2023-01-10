@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.5.1
+
+- Move dev dependencies into Gemfile
+
 ## v3.5.0
 
 - Fix solidus admin tab behavior
