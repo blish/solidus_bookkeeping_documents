@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.6.0
+
+- Allow Solidus 3.3
+
 ## v3.5.1
 
 - Move dev dependencies into Gemfile
