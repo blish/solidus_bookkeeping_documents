@@ -107,7 +107,9 @@ module Spree
           doc: self,
           printable: printable,
         },
-        template: "#{template_name}.pdf.prawn",
+        template: template_name,
+        formats: [:pdf],
+        handlers: [:prawn],
       )
     end
 
