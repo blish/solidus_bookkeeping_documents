@@ -10,15 +10,15 @@ Gem::Specification.new do |s|
 
   s.authors = ["Thomas von Deyen", "Martin Meyerhoff"]
   s.email = "hello@blish.cloud"
-  s.homepage = "https://gitlab.com/blish/solidus_bookkeeping_documents"
+  s.homepage = "https://github.com/blish-cloud/solidus_bookkeeping_documents"
   s.license = "BSD-3"
 
   if s.respond_to?(:metadata)
     s.metadata = {
       "allowed_push_host" => "https://rubygems.pkg.github.com/blish-cloud",
-      "changelog_uri" => "https://gitlab.com/blish/gems/solidus_bookkeeping_documents/-/raw/main/CHANGELOG.md",
-      "source_code_uri" => "https://gitlab.com/blish/gems/solidus_bookkeeping_documents/-/tree/main",
-      "bug_tracker_uri" => "https://gitlab.com/blish/gems/solidus_bookkeeping_documents/-/issues",
+      "changelog_uri" => "https://github.com/blish-cloud/solidus_bookkeeping_documents/blob/main/CHANGELOG.md",
+      "source_code_uri" => "https://github.com/blish-cloud/solidus_bookkeeping_documents",
+      "bug_tracker_uri" => "https://github.com/blish-cloud/solidus_bookkeeping_documents/issues",
     }
   else
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
