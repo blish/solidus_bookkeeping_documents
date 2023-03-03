@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  RSpec:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        solidus_version:
+          - "v3.0"
+          - "v3.1"
+          - "v3.2"
+    env:
+      SOLIDUS_VERSION: ${{ matrix.solidus_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0"
+          bundler-cache: true
+      - name: Setup test app
+        run: RAILS_ENV=test bundle exec rake extension:test_app
+      - name: Run tests
+        run: bundle exec rspec
+      - uses: actions/upload-artifact@main
+        if: failure()
+        with:
+          name: Screenshots
+          path: spec/dummy/tmp/capybara

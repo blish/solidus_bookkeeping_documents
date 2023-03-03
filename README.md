@@ -1,3 +1,5 @@
+[![CI](https://github.com/blish-cloud/solidus_bookkeeping_documents/actions/workflows/ci.yml/badge.svg)](https://github.com/blish-cloud/solidus_bookkeeping_documents/actions/workflows/ci.yml)
+
 # Solidus Bookkeeping Documents
 
 This extension provides a model `Spree::BookkeepingDocument`, which generates PDFs from any Spree Object with the help of View objects that translate between different object structures and PDF templates. It stores a "number" string as well as first name, last name, email, and amount with each document for convenient searching in the backend.
@@ -15,7 +17,9 @@ In the `Spree::Admin::OrdersController#edit` view, you'll find an additional but
 
 Add to your `Gemfile`
 ```ruby
-gem 'solidus_bookkeeping_documents', git: 'https://gitlab.com/blish/gems/solidus_bookkeeping_documents', branch: 'main'
+source "https://rubygems.pkg.github.com/blish-cloud" do
+  gem "solidus_bookkeeping_documents"
+end
 ```
 
 Run
@@ -184,7 +188,7 @@ gem release
 
 Copyright (c) 2020 [Blish][2], and other [contributors][3], released under the [New BSD License][4]
 
-[1]: https://gitlab.com/blish/gems/solidus_bookkeeping_documents/blob/main/CONTRIBUTING.md
+[1]: https://github.com/blish-cloud/solidus_bookkeeping_documents/blob/main/CONTRIBUTING.md
 [2]: https://blish.cloud
-[3]: https://gitlab.com/blish/gems/solidus_bookkeeping_documents/contributors
-[4]: https://gitlab.com/blish/gems/solidus_bookkeeping_documents/blob/main/LICENSE.md
+[3]: https://github.com/blish-cloud/solidus_bookkeeping_documents/contributors
+[4]: https://github.com/blish-cloud/solidus_bookkeeping_documents/blob/main/LICENSE.md
