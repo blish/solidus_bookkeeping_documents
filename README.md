@@ -1,4 +1,4 @@
-[![CI](https://github.com/blish-cloud/solidus_bookkeeping_documents/actions/workflows/ci.yml/badge.svg)](https://github.com/blish-cloud/solidus_bookkeeping_documents/actions/workflows/ci.yml)
+[![CI](https://github.com/blish/solidus_bookkeeping_documents/actions/workflows/ci.yml/badge.svg)](https://github.com/blish/solidus_bookkeeping_documents/actions/workflows/ci.yml)
 
 # Solidus Bookkeeping Documents
 
@@ -17,7 +17,7 @@ In the `Spree::Admin::OrdersController#edit` view, you'll find an additional but
 
 Add to your `Gemfile`
 ```ruby
-source "https://rubygems.pkg.github.com/blish-cloud" do
+source "https://rubygems.pkg.github.com/blish" do
   gem "solidus_bookkeeping_documents"
 end
 ```
@@ -188,7 +188,7 @@ gem release
 
 Copyright (c) 2020 [Blish][2], and other [contributors][3], released under the [New BSD License][4]
 
-[1]: https://github.com/blish-cloud/solidus_bookkeeping_documents/blob/main/CONTRIBUTING.md
+[1]: https://github.com/blish/solidus_bookkeeping_documents/blob/main/CONTRIBUTING.md
 [2]: https://blish.cloud
-[3]: https://github.com/blish-cloud/solidus_bookkeeping_documents/contributors
-[4]: https://github.com/blish-cloud/solidus_bookkeeping_documents/blob/main/LICENSE.md
+[3]: https://github.com/blish/solidus_bookkeeping_documents/contributors
+[4]: https://github.com/blish/solidus_bookkeeping_documents/blob/main/LICENSE.md

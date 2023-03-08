@@ -5,4 +5,4 @@ release:
   tag: true
   push: true
   key: github
-  host: https://rubygems.pkg.github.com/blish-cloud
+  host: https://rubygems.pkg.github.com/blish
