@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.7.0
+
+- Allow Ruby 3.2
+- Only support Solidus 3.3
+
+## v3.6.1
+
+- Remove format and handler from template name
+
 ## v3.6.0
 
 - Allow Solidus 3.3
