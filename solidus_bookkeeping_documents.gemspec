@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "prawn-rails", "~> 1.0"
   s.add_runtime_dependency "deface", "~> 1.0"
   s.add_runtime_dependency "dragonfly", "~> 1.0"
-  s.add_runtime_dependency "solidus_core", [">= 2.11.0", "< 4"]
-  s.add_runtime_dependency "solidus_backend", [">= 2.11.0", "< 4"]
+  s.add_runtime_dependency "solidus_core", ["~> 3.3.1"]
+  s.add_runtime_dependency "solidus_backend", ["~> 3.3.1"]
   s.add_runtime_dependency "solidus_support", ["~> 0.7"]
 end
