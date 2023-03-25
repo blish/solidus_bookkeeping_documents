@@ -7,6 +7,9 @@ coverage
 Gemfile.lock
 tmp
 pkg
-spec/dummy
 .rvmrc
 .ruby-gemset
+spec/dummy/db/migrate
+spec/dummy/uploads
+spec/dummy/log
+*.sqlite3

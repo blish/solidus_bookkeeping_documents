@@ -14,22 +14,25 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        solidus_version:
-          - "v3.3"
-    env:
-      SOLIDUS_VERSION: ${{ matrix.solidus_version }}
+        ruby_version:
+          - "3.0"
+          - "3.1"
+          - "3.2"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0"
+          ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
-      - name: Setup test app
-        run: RAILS_ENV=test bundle exec rake extension:test_app
+      - name: Setup test db
+        run: |
+          cd spec/dummy
+          RAILS_ENV=test bin/rake db:test:prepare
+          cd -
       - name: Run tests
-        run: bundle exec rspec
+        run: bin/rspec
       - uses: actions/upload-artifact@main
         if: failure()
         with:
