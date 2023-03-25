@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :invoiceable_order, class: Spree::Order do
     user
-    bill_address { create(:address, name: "Jane Doe", country: create(:country)) }
-    ship_address { create(:address, name: "John Doe", country: create(:country)) }
+    bill_address { create(:address, name: "Jane Doe", country: create(:country, states_required: false)) }
+    ship_address { create(:address, name: "John Doe", country: create(:country, states_required: false)) }
     completed_at { nil }
     email { user.email }
     state { "confirm" }
