@@ -1,0 +1,3 @@
+test:
+  service: Disk
+  root: /Users/tvd/code/blish/solidus_bookkeeping_documents/spec/dummy/tmp/storage

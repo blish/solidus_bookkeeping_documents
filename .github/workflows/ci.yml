@@ -26,10 +26,13 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
-      - name: Setup test app
-        run: RAILS_ENV=test bundle exec rake extension:test_app
+      - name: Setup test db
+        run: |
+          cd spec/dummy
+          RAILS_ENV=test bin/rake db:test:prepare
+          cd -
       - name: Run tests
-        run: bundle exec rspec
+        run: bin/rspec
       - uses: actions/upload-artifact@main
         if: failure()
         with:
