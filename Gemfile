@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gemspec
 
 gem "rails", "~> 6.1.5"
-gem "solidus_frontend", "~> 3.3"
+gem "solidus_frontend", "~> 3.4"
 gem "listen"
 gem "pry-rails", ">= 0.3.0"
 gem "sqlite3", "~> 1.4"
