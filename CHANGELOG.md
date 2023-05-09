@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.8.0
+
+- Update to Solidus 3.4
+
 ## v3.7.0
 
 - Allow Ruby 3.2
