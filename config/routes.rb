@@ -6,6 +6,6 @@ Spree::Core::Engine.routes.draw do
     end
 
     resource :print_invoice_settings, only: [:edit, :update]
-    resources :bookkeeping_documents, only: [:index, :show]
+    resources :bookkeeping_documents, only: [:index, :show, :destroy]
   end
 end
