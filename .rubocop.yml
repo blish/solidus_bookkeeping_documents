@@ -1,8 +1,7 @@
----
-inherit_from: .hound.yml
+require: standard
+
+inherit_gem:
+  standard: config/base.yml
 
 AllCops:
-  Exclude:
-    - spec/dummy/**/*
-    - bin/*
-    - Guardfile
+  TargetRubyVersion: 3.1

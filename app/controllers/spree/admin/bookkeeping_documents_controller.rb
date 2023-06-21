@@ -23,6 +23,18 @@ module Spree
         @bookkeeping_documents = @bookkeeping_documents.page(params[:page] || 1).per(10)
       end
 
+      def destroy
+        @bookkeeping_document.attachment = nil
+        if @bookkeeping_document.save
+          flash[:success] = t(".successfully_remove_attachment")
+        end
+
+        respond_with(@object) do |format|
+          format.html { redirect_to location_after_destroy }
+          format.js { render partial: "spree/admin/shared/destroy" }
+        end
+      end
+
       private
 
       def order_focused?

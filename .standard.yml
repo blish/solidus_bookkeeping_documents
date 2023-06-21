@@ -1,0 +1,7 @@
+parallel: true # default: false
+format: progress # default: Standard::Formatter
+default_ignores: false # default: true
+
+ignore:
+  - "spec/dummy/**/*"
+  - "vendor/bundle/**/*"

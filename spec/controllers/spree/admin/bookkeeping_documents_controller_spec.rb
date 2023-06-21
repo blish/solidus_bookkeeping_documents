@@ -100,4 +100,16 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
       end
     end
   end
+
+  describe "#destroy" do
+    let(:order) { create(:invoiceable_order) }
+    let(:invoice) { order.invoice }
+
+    it "removes the attachment" do
+      invoice.pdf # Access pdf to create the file
+      delete :destroy, params: {id: invoice.id}
+      expect(response).to redirect_to(spree.admin_bookkeeping_documents_path)
+      expect(invoice.reload.attachment_uid).to be_nil
+    end
+  end
 end

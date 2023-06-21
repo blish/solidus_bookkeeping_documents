@@ -2,6 +2,12 @@
 de:
   spree:
     admin:
+      bookkeeping_documents:
+        destroy:
+          successfully_remove_attachment: Datei wurde erfolgreich neu generiert.
+        table:
+          are_you_sure: Sind Sie sicher dass Sie die Datei neu generieren wollen?
+          refresh_file: Datei neu generieren
       tab:
         documents: Dokumente
         print_invoice_settings: Rechnungsdruck-Einstellungen

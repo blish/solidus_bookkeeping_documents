@@ -17,3 +17,8 @@ group :test do
   gem "rails-controller-testing"
   gem "solidus_dev_support"
 end
+
+group :utils do
+  gem "standard", ">= 1.0", require: false
+  gem "rubocop", require: false
+end

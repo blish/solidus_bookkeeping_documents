@@ -33,6 +33,7 @@
       <td><%= bookkeeping_document.email %></td>
       <td class="number"><%= bookkeeping_document.display_total.to_html %></td>
       <td class='actions' data-hook="admin_orders_index_row_actions">
+        <%= link_to_with_icon "refresh", "", admin_bookkeeping_document_path(bookkeeping_document), no_text: true, method: :delete, data: { confirm:t(".are_you_sure"), title: t(".refresh_file") } %>
         <%= link_to_with_icon "file", "", admin_bookkeeping_document_path(bookkeeping_document, format: :pdf), title: "show_bookkeeping_document_#{bookkeeping_document.id}", no_text: true %>
       </td>
     </tr>
