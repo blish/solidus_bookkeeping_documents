@@ -11,6 +11,10 @@ gem "sassc-rails", "~> 2.1"
 gem "coffee-rails", "~> 5.0"
 gem "selenium-webdriver", "< 4.9.1" # until https://github.com/teamcapybara/capybara/pull/2665 got merged
 
+source "https://rubygems.pkg.github.com/blish" do
+  gem "blish-support", require: false
+end
+
 group :test do
   gem "simplecov", "~> 0.10"
   gem "pdf-inspector", "~> 1.2"
