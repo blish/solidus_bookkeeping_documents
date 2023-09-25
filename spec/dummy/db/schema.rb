@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_25_123730) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_133488) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -303,7 +303,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_123730) do
     t.integer "position"
     t.string "name"
     t.string "presentation"
-    t.integer "option_type_id"
+    t.integer "option_type_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["option_type_id"], name: "index_spree_option_values_on_option_type_id"
@@ -315,7 +315,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_123730) do
     t.integer "option_value_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["variant_id", "option_value_id"], name: "index_option_values_variants_on_variant_id_and_option_value_id"
+    t.index ["variant_id", "option_value_id"], name: "index_option_values_variants_on_variant_id_and_option_value_id", unique: true
     t.index ["variant_id"], name: "index_spree_option_values_variants_on_variant_id"
   end
 
@@ -515,16 +515,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_123730) do
     t.index ["taxon_id"], name: "index_spree_products_taxons_on_taxon_id"
   end
 
-  create_table "spree_promotion_action_line_items", force: :cascade do |t|
-    t.integer "promotion_action_id"
-    t.integer "variant_id"
-    t.integer "quantity", default: 1
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["promotion_action_id"], name: "index_spree_promotion_action_line_items_on_promotion_action_id"
-    t.index ["variant_id"], name: "index_spree_promotion_action_line_items_on_variant_id"
-  end
-
   create_table "spree_promotion_actions", force: :cascade do |t|
     t.integer "promotion_id"
     t.integer "position"
@@ -580,13 +570,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_123730) do
 
   create_table "spree_promotion_rules", force: :cascade do |t|
     t.integer "promotion_id"
-    t.integer "product_group_id"
     t.string "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "code"
     t.text "preferences"
-    t.index ["product_group_id"], name: "index_promotion_rules_on_product_group_id"
     t.index ["promotion_id"], name: "index_spree_promotion_rules_on_promotion_id"
   end
 
@@ -615,7 +602,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_123730) do
     t.string "name"
     t.string "type"
     t.integer "usage_limit"
-    t.string "match_policy", default: "all"
     t.boolean "advertise", default: false
     t.string "path"
     t.datetime "created_at"
@@ -779,7 +765,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_123730) do
     t.decimal "cost", precision: 10, scale: 2, default: "0.0"
     t.datetime "shipped_at", precision: nil
     t.integer "order_id"
-    t.integer "deprecated_address_id"
     t.string "state"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -788,7 +773,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_123730) do
     t.decimal "additional_tax_total", precision: 10, scale: 2, default: "0.0"
     t.decimal "promo_total", precision: 10, scale: 2, default: "0.0"
     t.decimal "included_tax_total", precision: 10, scale: 2, default: "0.0", null: false
-    t.index ["deprecated_address_id"], name: "index_spree_shipments_on_deprecated_address_id"
     t.index ["number"], name: "index_shipments_on_number"
     t.index ["order_id"], name: "index_spree_shipments_on_order_id"
     t.index ["stock_location_id"], name: "index_spree_shipments_on_stock_location_id"
@@ -1072,7 +1056,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_123730) do
 
   create_table "spree_taxons", force: :cascade do |t|
     t.integer "parent_id"
-    t.integer "position", default: 0
     t.string "name", null: false
     t.string "permalink"
     t.integer "taxonomy_id"
@@ -1092,7 +1075,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_123730) do
     t.index ["lft"], name: "index_spree_taxons_on_lft"
     t.index ["parent_id"], name: "index_taxons_on_parent_id"
     t.index ["permalink"], name: "index_taxons_on_permalink"
-    t.index ["position"], name: "index_spree_taxons_on_position"
     t.index ["rgt"], name: "index_spree_taxons_on_rgt"
     t.index ["taxonomy_id"], name: "index_taxons_on_taxonomy_id"
   end
