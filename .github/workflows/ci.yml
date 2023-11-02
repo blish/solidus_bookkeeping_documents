@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+env:
+  BUNDLE_RUBYGEMS__PKG__GITHUB__COM: ${{ secrets.BUNDLE_RUBYGEMS__PKG__GITHUB__COM }}
+  
 jobs:
   RSpec:
     runs-on: ubuntu-latest
