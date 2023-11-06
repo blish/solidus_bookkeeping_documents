@@ -1,3 +1,13 @@
+# Change Log
+
+## v4.0.0 (2023-11-06)
+
+### Features
+* Allow PDF regeneration by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/7
+### Breaking Changes
+* Solidus 4.0 update by @sascha-karnatz in https://github.com/blish/solidus_bookkeeping_documents/pull/8
+
+**Full Changelog**: https://github.com/blish/solidus_bookkeeping_documents/compare/v3.8.0...v4.0.0
 # Changelog
 
 ## v3.8.0
