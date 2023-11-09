@@ -10,6 +10,8 @@ de:
           refresh_file: Datei neu generieren
       tab:
         documents: Dokumente
+        invoices: Rechnungen
+        packing_slips: Lieferscheine
         print_invoice_settings: Rechnungsdruck-Einstellungen
     print_invoice:
       date: Datum
