@@ -18,14 +18,13 @@ Gem::Specification.new do |s|
       "allowed_push_host" => "https://rubygems.pkg.github.com/blish",
       "changelog_uri" => "https://github.com/blish/solidus_bookkeeping_documents/blob/main/CHANGELOG.md",
       "source_code_uri" => "https://github.com/blish/solidus_bookkeeping_documents",
-      "bug_tracker_uri" => "https://github.com/blish/solidus_bookkeeping_documents/issues",
+      "bug_tracker_uri" => "https://github.com/blish/solidus_bookkeeping_documents/issues"
     }
   else
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
 
   s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec/|bin}) }
-  s.test_files = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^spec/}) }
 
   s.add_runtime_dependency "prawn-rails", "~> 1.0"
   s.add_runtime_dependency "deface", "~> 1.0"
