@@ -2,7 +2,7 @@
 # See http://docs.solidus.io/Spree/AppConfiguration.html for details
 
 # Solidus version defaults for preferences that are not overridden
-Spree.load_defaults '4.0'
+Spree.load_defaults "4.1"
 
 Spree.config do |config|
   # Core:
@@ -18,8 +18,8 @@ Spree.config do |config|
   # config.inventory_cache_threshold = 3
 
   # Configure adapter for attachments on products and taxons (use ActiveStorageAttachment or PaperclipAttachment)
-  config.image_attachment_module = 'Spree::Image::ActiveStorageAttachment'
-  config.taxon_attachment_module = 'Spree::Taxon::ActiveStorageAttachment'
+  config.image_attachment_module = "Spree::Image::ActiveStorageAttachment"
+  config.taxon_attachment_module = "Spree::Taxon::ActiveStorageAttachment"
 
   # Defaults
   # Permission Sets:
@@ -50,7 +50,7 @@ Spree.config do |config|
 end
 
 Spree::Backend::Config.configure do |config|
-  config.locale = 'en'
+  config.locale = "en"
 
   # Uncomment and change the following configuration if you want to add
   # a new menu item:
@@ -72,7 +72,7 @@ Spree::Api::Config.configure do |config|
   config.requires_authentication = true
 end
 
-  Spree.user_class = "Spree::LegacyUser"
+Spree.user_class = "Spree::LegacyUser"
 
 # Rules for avoiding to store the current path into session for redirects
 # When at least one rule is matched, the request path will not be stored
