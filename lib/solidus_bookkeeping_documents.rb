@@ -11,15 +11,15 @@ module Spree
     def self.solidus_menu_items
       @@solidus_menu_items ||= [
         ::Spree::BackendConfiguration::MenuItem.new(
-          [:documents, :bookkeeping_documents, :bookkeeping_exports],
-          :file,
+          label: :documents,
+          icon: :file,
           url: "/admin/bookkeeping_documents",
           condition: -> {
             can?(:admin, :bookkeeping_documents)
           },
           partial: "spree/admin/shared/sub_menu/documents",
-          match_path: "/bookkeeping_documents",
-        ),
+          match_path: /bookkeeping_documents|bookkeeping_exports/
+        )
       ]
     end
   end

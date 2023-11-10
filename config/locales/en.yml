@@ -4,6 +4,8 @@ en:
     admin:
       tab:
         documents: Documents
+        invoices: Invoices
+        packaging_slips: Packaging Slips
         print_invoice_settings: Print Invoice Settings
     print_invoice:
       documents: Documents
