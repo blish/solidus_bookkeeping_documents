@@ -1,5 +1,13 @@
 # Change Log
 
+## v4.2.0 (2023-11-10)
+
+### Features
+* Allows Solidus 4.2 by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/10
+
+
+**Full Changelog**: https://github.com/blish/solidus_bookkeeping_documents/compare/v4.1.0...v4.2.0
+
 ## v4.1.0 (2023-11-09)
 
 ### Features
