@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "rails", "~> 7.0"
+gem "rails", "~> 7.0.8"
 gem "solidus_frontend", "~> 3.4"
 gem "listen"
 gem "pry-rails", ">= 0.3.0"

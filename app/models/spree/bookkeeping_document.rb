@@ -37,6 +37,10 @@ module Spree
       end
     end
 
+    def self.ransackable_attributes(auth_object = nil)
+      ["attachment_name", "created_at", "document_number", "email", "name", "number", "printable_type", "total"]
+    end
+
     # An instance of Spree::Printable::#{YourModel}::#{YourTemplate}Presenter
     #
     def view
