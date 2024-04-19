@@ -1,3 +1,4 @@
+<!-- insert_bottom '[data-hook="admin_order_tabs"]' enabled -->
 <% if can? :show, Spree::Order %>
   <% if @order && @order.completed_at? %>
       <li class='<%= "#{'active' if current == :documents}" %>'>
