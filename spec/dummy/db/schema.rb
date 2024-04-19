@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_09_065707) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_19_081160) do
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "message_id", null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_065707) do
     t.string "name", null: false
     t.text "body"
     t.string "record_type", null: false
-    t.integer "record_id", null: false
+    t.bigint "record_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_065707) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", precision: nil, null: false
+    t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -47,8 +47,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_065707) do
     t.text "metadata"
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", precision: nil, null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -615,13 +615,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_065707) do
     t.index ["id", "type"], name: "index_spree_promotions_on_id_and_type"
     t.index ["promotion_category_id"], name: "index_spree_promotions_on_promotion_category_id"
     t.index ["starts_at"], name: "index_spree_promotions_on_starts_at"
-  end
-
-  create_table "spree_properties", force: :cascade do |t|
-    t.string "name"
-    t.string "presentation", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "spree_property_prototypes", force: :cascade do |t|
@@ -1216,10 +1209,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_065707) do
     t.datetime "updated_at"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "spree_promotion_code_batches", "spree_promotions", column: "promotion_id"
-  add_foreign_key "spree_promotion_codes", "spree_promotion_code_batches", column: "promotion_code_batch_id"
   add_foreign_key "spree_tax_rate_tax_categories", "spree_tax_categories", column: "tax_category_id"
   add_foreign_key "spree_tax_rate_tax_categories", "spree_tax_rates", column: "tax_rate_id"
   add_foreign_key "spree_wallet_payment_sources", "spree_users", column: "user_id"

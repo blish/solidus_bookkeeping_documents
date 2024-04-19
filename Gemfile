@@ -2,14 +2,14 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "rails", "~> 7.0.8"
+gem "rails", "~> 7.1"
 gem "solidus_frontend", "~> 3.4"
 gem "listen"
 gem "pry-rails", ">= 0.3.0"
 gem "sqlite3", "~> 1.4"
 gem "sassc-rails", "~> 2.1"
 gem "coffee-rails", "~> 5.0"
-gem "selenium-webdriver", "< 4.9.1" # until https://github.com/teamcapybara/capybara/pull/2665 got merged
+gem "selenium-webdriver", "~> 4.19"
 
 source "https://rubygems.pkg.github.com/blish" do
   gem "blish-support", require: false
