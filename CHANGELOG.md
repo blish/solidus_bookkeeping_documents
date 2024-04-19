@@ -1,5 +1,16 @@
 # Change Log
 
+## v4.3.0 (2024-04-19)
+
+### Features
+* Add ransackable attributes to BookingDocument model by @sascha-karnatz in https://github.com/blish/solidus_bookkeeping_documents/pull/12
+* Move from deface rb - files to deface files by @sascha-karnatz in https://github.com/blish/solidus_bookkeeping_documents/pull/13
+### Other Changes
+* Update dummy app to Rails v7.1 by @sascha-karnatz in https://github.com/blish/solidus_bookkeeping_documents/pull/14
+
+
+**Full Changelog**: https://github.com/blish/solidus_bookkeeping_documents/compare/v4.2.0...v4.3.0
+
 ## v4.2.0 (2023-11-10)
 
 ### Features
