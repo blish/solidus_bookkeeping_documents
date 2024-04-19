@@ -1,3 +1,4 @@
+<!-- insert_bottom '.admin-subnav' enabled -->
 <% if can?(:admin, :general_settings) %>
   <%= tab :print_invoice_settings, url: spree.edit_admin_print_invoice_settings_path, match_path: %r(print_invoice_settings) %>
 <% end %>
