@@ -1,5 +1,13 @@
 # Change Log
 
+## v4.4.0 (2024-05-31)
+
+### Other Changes
+* Allow Ruby 3.3 by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/15
+
+
+**Full Changelog**: https://github.com/blish/solidus_bookkeeping_documents/compare/v4.3.0...v4.4.0
+
 ## v4.3.0 (2024-04-19)
 
 ### Features
