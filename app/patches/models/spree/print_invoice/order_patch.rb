@@ -1,4 +1,4 @@
-module Spree::PrintInvoice::OrderDecorator
+module Spree::PrintInvoice::OrderPatch
   def self.prepended(base)
     base.has_many :bookkeeping_documents, as: :printable, dependent: :destroy, inverse_of: :printable
 
@@ -57,4 +57,4 @@ module Spree::PrintInvoice::OrderDecorator
   end
 end
 
-Spree::Order.prepend(Spree::PrintInvoice::OrderDecorator)
+Spree::Order.prepend(Spree::PrintInvoice::OrderPatch)

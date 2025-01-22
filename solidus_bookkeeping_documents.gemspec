@@ -31,5 +31,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "dragonfly", "~> 1.0"
   s.add_runtime_dependency "solidus_core", ["~> 4.0", "< 5"]
   s.add_runtime_dependency "solidus_backend", ["~> 4.0", "< 5"]
-  s.add_runtime_dependency "solidus_support", ["~> 0.7"]
+  s.add_runtime_dependency "solidus_support", [">= 0.14.1", "< 1"]
 end
