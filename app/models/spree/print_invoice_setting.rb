@@ -54,7 +54,7 @@ module Spree
 
       private
 
-      def method_missing(method_name, *args, &block)
+      def method_missing(method_name, *args, &block) # rubocop:disable Style/MissingRespondToMissing
         preference_name = method_name.to_s.sub(/(.+)=$/, '\1')
         if persisted_preferences&.has_preference?(preference_name)
           if method_name.to_s.end_with?("=")
@@ -65,10 +65,6 @@ module Spree
         else
           super
         end
-      end
-
-      def respond_to_missing(*args)
-        persisted_preferences&.has_preference?(args.first) || super
       end
 
       def persisted_preferences

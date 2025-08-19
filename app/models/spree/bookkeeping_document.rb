@@ -56,7 +56,7 @@ module Spree
 
     # If the document is called from the view with some method it doesn't know,
     # just call the view object. It should know.
-    def method_missing(method_name, *args, &block)
+    def method_missing(method_name, *args, &block) # rubocop:disable Style/MissingRespondToMissing
       if view.respond_to? method_name
         view.send(method_name, *args, &block)
       else
@@ -90,7 +90,7 @@ module Spree
     # = PDF file path
     #
     def file_url
-      return attachment.url unless attachment.app.datastore.class.name == "Dragonfly::S3DataStore"
+      return attachment.url unless attachment.app.datastore.class.name == "Dragonfly::S3DataStore" # rubocop:disable Style/ClassEqualityComparison
       attachment.remote_url
     end
 

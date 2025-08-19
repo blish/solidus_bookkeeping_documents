@@ -1,5 +1,3 @@
-include Forwardable
-
 module Spree
   class Printables::BaseView
     extend Forwardable

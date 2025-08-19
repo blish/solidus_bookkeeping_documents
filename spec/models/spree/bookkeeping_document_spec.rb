@@ -1,3 +1,16 @@
+class Spree::PrintInvoice::NumberFormatter
+  attr_reader :prefix, :number
+
+  def initialize(prefix, number)
+    @prefix = prefix
+    @number = number
+  end
+
+  def to_s
+    "MY-NICE-#{prefix}-#{number}"
+  end
+end
+
 RSpec.describe Spree::BookkeepingDocument do
   let(:printable) { Spree::Order.new }
   let(:template) { "invoice" }
@@ -159,21 +172,6 @@ RSpec.describe Spree::BookkeepingDocument do
     end
 
     context "when using a NumberFormatter" do
-      before do
-        class Spree::PrintInvoice::NumberFormatter
-          attr_reader :prefix, :number
-
-          def initialize(prefix, number)
-            @prefix = prefix
-            @number = number
-          end
-
-          def to_s
-            "MY-NICE-#{prefix}-#{number}"
-          end
-        end
-      end
-
       it "returns a nicely formatted number" do
         expect(document.formatted_number).to eq("MY-NICE-INVOICE-77")
       end

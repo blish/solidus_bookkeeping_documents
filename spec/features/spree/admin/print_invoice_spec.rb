@@ -36,7 +36,7 @@ RSpec.feature "Admin print invoice feature" do
       order.reload
       expect(page.body).to eq(
         IO.binread(
-          Rails.root.join("..", "..", "spec", "dummy", "uploads", "bookkeeping_documents", "#{order.invoice.attachment_uid}")
+          Rails.root.join("..", "..", "spec", "dummy", "uploads", "bookkeeping_documents", order.invoice.attachment_uid)
         )
       )
     end

@@ -1,5 +1,3 @@
-include Forwardable
-
 module Spree
   class Printables::Invoice::BaseView < Printables::BaseView
     extend Forwardable
@@ -40,7 +38,7 @@ module Spree
       all_adjustments.group_by(&:label).each do |label, adjustment_group|
         adjustments << Spree::Printables::Invoice::Adjustment.new(
           label: label,
-          amount: adjustment_group.map(&:amount).sum
+          amount: adjustment_group.sum(&:amount)
         )
       end
       adjustments
