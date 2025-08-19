@@ -7,6 +7,9 @@ SimpleCov.start do
   add_group  'Libraries', 'lib'
 end
 
+# Needs to be required before the dummy app is loaded
+require 'database_cleaner/active_record'
+
 ENV['RAILS_ENV'] ||= 'test'
 
 begin
