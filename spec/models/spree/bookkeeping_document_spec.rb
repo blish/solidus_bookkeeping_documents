@@ -75,7 +75,7 @@ RSpec.describe Spree::BookkeepingDocument do
       before do
         doc = Spree::BookkeepingDocument.create!(
           printable: printable,
-          template: "invoice",
+          template: "invoice"
         )
         doc.update_column(:document_number, 41)
         subject.save!
@@ -90,12 +90,12 @@ RSpec.describe Spree::BookkeepingDocument do
       before do
         doc = Spree::BookkeepingDocument.create!(
           printable: printable,
-          template: "invoice",
+          template: "invoice"
         )
         doc.update_columns(document_number: 411, document_number_prefix: "I-")
         doc = Spree::BookkeepingDocument.create!(
           printable: printable,
-          template: "packaging_slip",
+          template: "packaging_slip"
         )
         doc.update_columns(document_number: 412, document_number_prefix: "P-")
         subject.save!
@@ -112,7 +112,7 @@ RSpec.describe Spree::BookkeepingDocument do
         Spree::BookkeepingDocument.create!(
           printable: printable,
           template: "invoice",
-          document_number: nil,
+          document_number: nil
         )
       end
 
@@ -149,7 +149,7 @@ RSpec.describe Spree::BookkeepingDocument do
       Spree::BookkeepingDocument.create!(
         printable: printable,
         template: "invoice",
-        document_number: nil,
+        document_number: nil
       )
     end
 

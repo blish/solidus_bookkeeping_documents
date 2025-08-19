@@ -17,7 +17,7 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
         end
 
         it "renders pdf" do
-          get :show, params: { id: pdf.id }, format: :pdf
+          get :show, params: {id: pdf.id}, format: :pdf
           expect(response).to be_successful
         end
       end
@@ -28,7 +28,7 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
         end
 
         it "renders pdf" do
-          get :show, params: { id: pdf.id }, format: :pdf
+          get :show, params: {id: pdf.id}, format: :pdf
           expect(response).to be_successful
         end
       end
@@ -39,7 +39,7 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
       let(:pdf) { order.packaging_slip }
 
       it "renders pdf" do
-        get :show, params: { id: pdf.id }, format: :pdf
+        get :show, params: {id: pdf.id}, format: :pdf
         expect(response).to be_successful
       end
     end
@@ -56,18 +56,18 @@ RSpec.describe Spree::Admin::BookkeepingDocumentsController, type: :controller d
 
     let!(:bills_order) do
       create :invoiceable_order,
-             ship_address: bills_address,
-             email: "bill@murray.net"
+        ship_address: bills_address,
+        email: "bill@murray.net"
     end
 
     let!(:joes_order) do
       create :invoiceable_order,
-             ship_address: joes_address,
-             email: "joe@dalton.com"
+        ship_address: joes_address,
+        email: "joe@dalton.com"
     end
 
     context "from the Spree::Orders#edit view" do
-      before { get(:index, params: { order_id: bills_order.number }) }
+      before { get(:index, params: {order_id: bills_order.number}) }
 
       it "returns 200 success" do
         expect(response).to be_successful

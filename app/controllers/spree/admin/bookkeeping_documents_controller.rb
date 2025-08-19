@@ -47,13 +47,13 @@ module Spree
 
       def set_document_type
         @document_type ||= case params.fetch(:q, {})["template_cont"].to_s
-          when /invoice/
-            "invoices"
-          when /packaging\_slip/
-            "packaging_slips"
-          else
-            "documents"
-          end
+        when /invoice/
+          "invoices"
+        when /packaging_slip/
+          "packaging_slips"
+        else
+          "documents"
+        end
       end
     end
   end

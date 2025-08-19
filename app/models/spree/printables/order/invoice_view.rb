@@ -1,14 +1,14 @@
 module Spree
   class Printables::Order::InvoiceView < Printables::Invoice::BaseView
     def_delegators :@printable,
-                   :email,
-                   :bill_address,
-                   :ship_address,
-                   :tax_address,
-                   :item_total,
-                   :total,
-                   :payments,
-                   :shipments
+      :email,
+      :bill_address,
+      :ship_address,
+      :tax_address,
+      :item_total,
+      :total,
+      :payments,
+      :shipments
 
     def items
       printable.line_items.map do |item|
@@ -18,7 +18,7 @@ module Spree
           options_text: item.variant.options_text,
           price: item.price,
           quantity: item.quantity,
-          total: item.total,
+          total: item.total
         )
       end
     end

@@ -16,7 +16,7 @@ Dragonfly.app(:solidus_bookkeeping_documents).configure do
   url_format "/bookkeeping_documents/:job/:name"
 
   datastore :file,
-    root_path: Rails.root.join('uploads/bookkeeping_documents').to_s,
+    root_path: Rails.root.join("uploads/bookkeeping_documents").to_s,
     store_meta: false
 end
 

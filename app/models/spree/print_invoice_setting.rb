@@ -29,14 +29,14 @@ module Spree
       end
 
       def page_layouts
-        %w(landscape portrait)
+        %w[landscape portrait]
       end
 
       def font_faces
         [
           "Serif",
           "Sans Serif",
-          "Monospace",
+          "Monospace"
         ]
       end
 

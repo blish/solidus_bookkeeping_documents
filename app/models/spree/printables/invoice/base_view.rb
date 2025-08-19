@@ -16,23 +16,23 @@ module Spree
     end
 
     def bill_address
-      raise NotImplementedError, 'Please implement bill_address'
+      raise NotImplementedError, "Please implement bill_address"
     end
 
     def ship_address
-      raise NotImplementedError, 'Please implement ship_address'
+      raise NotImplementedError, "Please implement ship_address"
     end
 
     def tax_address
-      raise NotImplementedError, 'Please implement tax_address'
+      raise NotImplementedError, "Please implement tax_address"
     end
 
     def items
-      raise NotImplementedError, 'Please implement items'
+      raise NotImplementedError, "Please implement items"
     end
 
     def item_total
-      raise NotImplementedError, 'Please implement item_total'
+      raise NotImplementedError, "Please implement item_total"
     end
 
     def adjustments
@@ -47,11 +47,11 @@ module Spree
     end
 
     def shipments
-      raise NotImplementedError, 'Please implement shipments'
+      raise NotImplementedError, "Please implement shipments"
     end
 
     def payments
-      raise NotImplementedError, 'Please implement payments'
+      raise NotImplementedError, "Please implement payments"
     end
 
     def shipping_methods
