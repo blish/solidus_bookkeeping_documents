@@ -12,4 +12,4 @@ pkg
 spec/dummy/db/migrate
 spec/dummy/uploads
 spec/dummy/log
-*.sqlite3
+*.sqlite3*
