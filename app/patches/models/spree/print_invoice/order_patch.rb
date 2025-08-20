@@ -19,33 +19,6 @@ module Spree::PrintInvoice::OrderPatch
     base.state_machine.before_transition to: :complete, do: :invoice_for_order
   end
 
-  # Backwards compatibility stuff. Please don't use these methods, rather use the
-  # ones on Spree::BookkeepingDocument
-  #
-  def pdf_file
-    invoice.pdf
-  end
-
-  deprecate pdf_file: "Please use order.invoice.pdf instead", deprecator: SolidusBookkeepingDocuments::Deprecation
-
-  def pdf_filename
-    invoice.file_name
-  end
-
-  deprecate pdf_filename: "Please use order.invoice.file_name instead", deprecator: SolidusBookkeepingDocuments::Deprecation
-
-  def pdf_file_path
-    invoice.pdf_file_path
-  end
-
-  deprecate pdf_file_path: "Please use order.invoice.pdf_file_path instead", deprecator: SolidusBookkeepingDocuments::Deprecation
-
-  def pdf_storage_path(template)
-    bookkeeping_documents.find_by!(template: template).file_path
-  end
-
-  deprecate pdf_storage_path: "Please use order.{packaging_slip, invoice}.pdf_file_path instead", deprecator: SolidusBookkeepingDocuments::Deprecation
-
   def invoice_for_order
     # Under some conditions this method could be called more than once.
     # We have to make sure that an invoice/packaging slip is never created more
