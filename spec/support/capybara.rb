@@ -1,5 +1,5 @@
-require 'capybara/rspec'
-require 'capybara/rails'
+require "capybara/rspec"
+require "capybara/rails"
 require "capybara-screenshot/rspec"
 
 Capybara.javascript_driver = :selenium_headless

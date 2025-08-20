@@ -6,7 +6,7 @@ module Spree
       :name,
       :email,
       :total,
-      :number,
+      :number
     ]
 
     # Spree::BookkeepingDocument cares about creating PDFs. Whenever it needs to know
@@ -17,7 +17,7 @@ module Spree
     #
     belongs_to :printable, polymorphic: true
     validates :printable, :template, presence: true
-    validates *PERSISTED_ATTRS, presence: true, if: -> { self.persisted? }
+    validates(*PERSISTED_ATTRS, presence: true, if: -> { persisted? })
     scope :invoices, -> { where(template: "invoice") }
 
     # Store next document number
@@ -27,7 +27,6 @@ module Spree
     dragonfly_accessor :attachment, app: :solidus_bookkeeping_documents
 
     class << self
-
       # The maximum document number from all invoice documents
       #
       # You may pass a scope
@@ -57,7 +56,7 @@ module Spree
 
     # If the document is called from the view with some method it doesn't know,
     # just call the view object. It should know.
-    def method_missing(method_name, *args, &block)
+    def method_missing(method_name, *args, &block) # rubocop:disable Style/MissingRespondToMissing
       if view.respond_to? method_name
         view.send(method_name, *args, &block)
       else
@@ -91,7 +90,7 @@ module Spree
     # = PDF file path
     #
     def file_url
-      return attachment.url unless attachment.app.datastore.class.name == "Dragonfly::S3DataStore"
+      return attachment.url unless attachment.app.datastore.class.name == "Dragonfly::S3DataStore" # rubocop:disable Style/ClassEqualityComparison
       attachment.remote_url
     end
 
@@ -109,11 +108,11 @@ module Spree
       ApplicationController.render(
         assigns: {
           doc: self,
-          printable: printable,
+          printable: printable
         },
         template: template_name,
         formats: [:pdf],
-        handlers: [:prawn],
+        handlers: [:prawn]
       )
     end
 
@@ -128,7 +127,11 @@ module Spree
     end
 
     def formatted_number
-      if (Object.const_get("::Spree::PrintInvoice::NumberFormatter") rescue false)
+      if begin
+        Object.const_get("::Spree::PrintInvoice::NumberFormatter")
+      rescue
+        false
+      end
         Spree::PrintInvoice::NumberFormatter.new(document_number_prefix, document_number).to_s
       else
         "#{document_number_prefix}#{document_number}"
@@ -147,7 +150,7 @@ module Spree
     def number_scope
       return unless number_prefix
       {
-        document_number_prefix: number_prefix,
+        document_number_prefix: number_prefix
       }
     end
 
@@ -181,7 +184,7 @@ module Spree
     def send_or_create_pdf!
       unless attachment_stored?
         self.attachment = render_pdf
-        self.attachment.name = file_name
+        attachment.name = file_name
         save!
       end
 

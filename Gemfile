@@ -23,6 +23,6 @@ group :test do
 end
 
 group :utils do
-  gem "standard", ">= 1.0", require: false
+  gem "standard", ">= 1.35.1", require: false
   gem "rubocop", require: false
 end

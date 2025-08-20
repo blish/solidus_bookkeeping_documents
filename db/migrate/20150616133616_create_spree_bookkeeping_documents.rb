@@ -1,7 +1,7 @@
 class CreateSpreeBookkeepingDocuments < ActiveRecord::Migration[6.0]
   def change
     create_table :spree_bookkeeping_documents do |t|
-      t.references :printable, polymorphic: true, index: { name: "spree_bookkeeping_documents_printable_idx" }
+      t.references :printable, polymorphic: true, index: {name: "spree_bookkeeping_documents_printable_idx"}
       t.string :template
       t.string :number
       t.string :name, index: true

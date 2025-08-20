@@ -11,7 +11,7 @@ RSpec.describe Spree::PrintInvoiceSetting do
   describe "#page_layouts" do
     it "has a list of layouts" do
       expect(subject.page_layouts).to be_a(Array)
-      expect(subject.page_layouts).to match_array %w(landscape portrait)
+      expect(subject.page_layouts).to match_array %w[landscape portrait]
     end
   end
 
@@ -79,7 +79,7 @@ RSpec.describe Spree::PrintInvoiceSetting do
         font_face: "Serif",
         font_size: 11,
         invoice_number_prefix: "RE",
-        packaging_slip_number_prefix: "L",
+        packaging_slip_number_prefix: "L"
       }
     end
 

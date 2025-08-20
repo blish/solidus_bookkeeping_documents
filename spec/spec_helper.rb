@@ -1,29 +1,29 @@
-require 'simplecov'
+require "simplecov"
 SimpleCov.start do
-  add_filter 'spec'
-  add_group  'Controllers', 'app/controllers'
-  add_group  'Overrides', 'app/overrides'
-  add_group  'Models', 'app/models'
-  add_group  'Libraries', 'lib'
+  add_filter "spec"
+  add_group "Controllers", "app/controllers"
+  add_group "Overrides", "app/overrides"
+  add_group "Models", "app/models"
+  add_group "Libraries", "lib"
 end
 
 # Needs to be required before the dummy app is loaded
-require 'database_cleaner/active_record'
+require "database_cleaner/active_record"
 
-ENV['RAILS_ENV'] ||= 'test'
+ENV["RAILS_ENV"] ||= "test"
 
 begin
-  require File.expand_path('../dummy/config/environment', __FILE__)
+  require File.expand_path("../dummy/config/environment", __FILE__)
 rescue LoadError
-  puts 'Could not load dummy application. Please ensure you have run `bundle exec rake test_app`'
+  puts "Could not load dummy application. Please ensure you have run `bundle exec rake test_app`"
   exit
 end
 
-require 'rspec/rails'
-require 'ffaker'
-require 'pry'
+require "rspec/rails"
+require "ffaker"
+require "pry"
 
-require 'rails-controller-testing'
+require "rails-controller-testing"
 Rails::Controller::Testing.install
 
 RSpec.configure do |config|
@@ -46,4 +46,4 @@ RSpec.configure do |config|
   end
 end
 
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |file| require file }
+Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each { |file| require file }
