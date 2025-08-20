@@ -57,54 +57,18 @@ RSpec.describe Spree::Order do
     end
   end
 
-  describe "deprecated methods" do
-    let(:order) { Spree::Order.new }
-    let(:invoice) { Spree::BookkeepingDocument.new }
+  describe "destruction" do
+    let!(:order) { create :invoiceable_order }
 
-    before do
-      allow(order).to receive(:invoice).and_return(invoice)
-    end
-
-    around do |example|
-      SolidusBookkeepingDocuments::Deprecation.silence do
-        example.run
+    context "when destroyed" do
+      before do
+        order.shipments.map(&:pend!)
       end
-    end
 
-    describe "#pdf_file" do
-      it "calls invoice#pdf" do
-        expect(invoice).to receive(:pdf)
-        order.pdf_file
-      end
-    end
-
-    describe "#pdf_filename" do
-      it "calls invoice#file_name" do
-        expect(invoice).to receive(:file_name)
-        order.pdf_filename
-      end
-    end
-
-    describe "#pdf_file_path" do
-      it "calls invoice#pdf_file_path" do
-        expect(invoice).to receive(:pdf_file_path)
-        order.pdf_file_path
-      end
-    end
-
-    describe "destruction" do
-      let!(:order) { create :invoiceable_order }
-
-      context "when destroyed" do
-        before do
-          order.shipments.map(&:pend!)
-        end
-
-        it "also destroys the invoice" do
-          expect(Spree::BookkeepingDocument.count).not_to eq(0)
-          order.destroy!
-          expect(Spree::BookkeepingDocument.count).to eq(0)
-        end
+      it "also destroys the invoice" do
+        expect(Spree::BookkeepingDocument.count).not_to eq(0)
+        order.destroy!
+        expect(Spree::BookkeepingDocument.count).to eq(0)
       end
     end
   end
