@@ -1,6 +1,3 @@
-require 'rubygems'
-gemfile = File.expand_path("../../../../Gemfile", __FILE__)
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../../Gemfile", __dir__)
 
-ENV['BUNDLE_GEMFILE'] = gemfile
-require 'bundler'
-Bundler.setup
+require "bundler/setup" # Set up gems listed in the Gemfile.

@@ -1,35 +1,22 @@
-require File.expand_path('../boot', __FILE__)
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
-Bundler.require(*Rails.groups(assets: %w(development test)))
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
 
-begin
-  require 'spree_frontend'
-rescue LoadError
-  # spree_frontend is not available.
-end
-begin
-  require 'spree_backend'
-rescue LoadError
-  # spree_backend is not available.
-end
-begin
-  require 'spree_api'
-rescue LoadError
-  # spree_api is not available.
-end
-require 'solidus_bookkeeping_documents'
+require "solidus_bookkeeping_documents"
 
 module Dummy
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.1
+    config.load_defaults 8.0
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(assets tasks))
+    config.autoload_lib(ignore: %w[assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
     #
