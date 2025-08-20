@@ -19,6 +19,7 @@ group :test do
   gem "simplecov", "~> 0.10"
   gem "pdf-inspector", "~> 1.2"
   gem "rails-controller-testing"
+  gem 'shoulda-matchers', '~> 6.0'
   gem "solidus_dev_support"
 end
 
