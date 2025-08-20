@@ -47,3 +47,10 @@ RSpec.configure do |config|
 end
 
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each { |file| require file }
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end

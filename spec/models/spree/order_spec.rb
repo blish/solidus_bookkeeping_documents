@@ -1,4 +1,22 @@
 RSpec.describe Spree::Order do
+  it do
+    is_expected.to have_many(:bookkeeping_documents)
+      .dependent(:destroy)
+      .inverse_of(:printable)
+  end
+
+  it do
+    is_expected.to have_one(:invoice)
+      .class_name("Spree::BookkeepingDocument")
+      .conditions(template: "invoice")
+  end
+
+  it do
+    is_expected.to have_one(:packaging_slip)
+      .class_name("Spree::BookkeepingDocument")
+      .conditions(template: "packaging_slip")
+  end
+
   describe "delegates" do
     let(:order) { Spree::Order.new }
     let(:invoice) { Spree::BookkeepingDocument.new(printable: order, template: "invoice") }
