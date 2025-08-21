@@ -1,5 +1,18 @@
 # Change Log
 
+## v5.0.0 (2025-08-21)
+
+### Breaking Changes
+* Use Flickwerk for patches by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/16
+* Remove deprecated methods by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/19
+### Other Changes
+* Update dummy app to Rails 8 by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/17
+* Lint code syntax for Ruby 3.3 by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/18
+* Test and Lint with Ruby 3.4 by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/20
+
+
+**Full Changelog**: https://github.com/blish/solidus_bookkeeping_documents/compare/v4.4.0...v5.0.0
+
 ## v4.4.0 (2024-05-31)
 
 ### Other Changes
