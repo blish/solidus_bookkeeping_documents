@@ -1,5 +1,3 @@
-require "spree/preferences/persistable"
-
 module Spree
   class PrintInvoiceSetting < Spree::Base
     include Spree::Preferences::Persistable
