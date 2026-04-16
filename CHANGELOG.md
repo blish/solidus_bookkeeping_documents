@@ -1,5 +1,13 @@
 # Change Log
 
+## v5.1.0 (2026-04-16)
+
+### Other Changes
+* Update Solidus to 4.6 by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/21
+
+
+**Full Changelog**: https://github.com/blish/solidus_bookkeeping_documents/compare/v5.0.0...v5.1.0
+
 ## v5.0.0 (2025-08-21)
 
 ### Breaking Changes
