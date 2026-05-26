@@ -1,5 +1,13 @@
 # Change Log
 
+## v5.1.1 (2026-05-26)
+
+### Fixes
+* fix: Reset persisted_preferences ivar after update by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/22
+
+
+**Full Changelog**: https://github.com/blish/solidus_bookkeeping_documents/compare/v5.1.0...v5.1.1
+
 ## v5.1.0 (2026-04-16)
 
 ### Other Changes
