@@ -42,7 +42,7 @@ RSpec.configure do |config|
 
   # Avoid insta cache to leak into single examples
   config.after(:each) do
-    Spree::PrintInvoiceSetting.instance_variable_set(:@persisted_preferences, nil)
+    Spree::PrintInvoiceSetting.instance_variable_set(:@_persisted_preferences, nil)
   end
 end
 

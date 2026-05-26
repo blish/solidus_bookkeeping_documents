@@ -50,6 +50,11 @@ module Spree
         logo_scale.to_f / 100
       end
 
+      # Reset the memoized persisted preferences, so that the new settings will be loaded from the database again.
+      def reset_persisted_preferences!
+        @_persisted_preferences = nil
+      end
+
       private
 
       def method_missing(method_name, *args, &block) # rubocop:disable Style/MissingRespondToMissing
@@ -65,8 +70,10 @@ module Spree
         end
       end
 
+      # Memoize the persisted preferences, so that we don't hit the database every time we access a preference.
+      # Note: Make sure to call `reset_persisted_preferences!` after updating the settings.
       def persisted_preferences
-        @persisted_preferences ||= first || create
+        @_persisted_preferences ||= first || create
       end
     end
 

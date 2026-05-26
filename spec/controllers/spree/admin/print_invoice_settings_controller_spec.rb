@@ -12,76 +12,88 @@ RSpec.describe Spree::Admin::PrintInvoiceSettingsController, type: :controller d
       expect(response).to redirect_to spree.edit_admin_print_invoice_settings_path
     end
 
-    subject { Spree::PrintInvoiceSetting.first }
-
-    it "sets preferred_next_number to 1" do
-      put :update, params: {print_invoice_setting: {preferred_next_number: 1}}
-      expect(subject.preferred_next_number).to be(1)
+    it "can set preferred_next_number" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_next_number: 1}}
+      }.to change { Spree::PrintInvoiceSetting.next_number }.to(1)
     end
 
-    it 'sets preferred_logo_path to "my_path/logo.png"' do
-      put :update, params: {print_invoice_setting: {preferred_logo_path: "my_path/logo.png"}}
-      expect(subject.preferred_logo_path).to eq("my_path/logo.png")
+    it "can set preferred_logo_path" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_logo_path: "my_path/logo.png"}}
+      }.to change { Spree::PrintInvoiceSetting.logo_path }.to("my_path/logo.png")
     end
 
-    it 'sets preferred_page_size to "A4"' do
-      put :update, params: {print_invoice_setting: {preferred_page_size: "A4"}}
-      expect(subject.preferred_page_size).to eq("A4")
+    it "can set preferred_page_size" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_page_size: "Letter"}}
+      }.to change { Spree::PrintInvoiceSetting.page_size }.to("Letter")
     end
 
-    it 'sets preferred_page_layout to "portrait"' do
-      put :update, params: {print_invoice_setting: {preferred_page_layout: "portrait"}}
-      expect(subject.preferred_page_layout).to eq("portrait")
+    it "can set preferred_page_layout" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_page_layout: "landscape"}}
+      }.to change { Spree::PrintInvoiceSetting.page_layout }.to("landscape")
     end
 
-    it 'sets preferred_footer_left to "abc"' do
-      put :update, params: {print_invoice_setting: {preferred_footer_left: "abc"}}
-      expect(subject.preferred_footer_left).to eq("abc")
+    it "can set preferred_footer_left" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_footer_left: "abc"}}
+      }.to change { Spree::PrintInvoiceSetting.footer_left }.to("abc")
     end
 
-    it 'sets preferred_footer_right to "abc"' do
-      put :update, params: {print_invoice_setting: {preferred_footer_right: "abc"}}
-      expect(subject.preferred_footer_right).to eq("abc")
+    it "can set preferred_footer_right" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_footer_right: "abc"}}
+      }.to change { Spree::PrintInvoiceSetting.footer_right }.to("abc")
     end
 
-    it 'sets preferred_return_message to "abc"' do
-      put :update, params: {print_invoice_setting: {preferred_return_message: "abc"}}
-      expect(subject.preferred_return_message).to eq("abc")
+    it "can set preferred_return_message" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_return_message: "abc"}}
+      }.to change { Spree::PrintInvoiceSetting.return_message }.to("abc")
     end
 
-    it 'sets preferred_footer_right to "abc"' do
-      put :update, params: {print_invoice_setting: {preferred_footer_right: "abc"}}
-      expect(subject.preferred_footer_right).to eq("abc")
+    it "can set preferred_footer_right" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_footer_right: "abc"}}
+      }.to change { Spree::PrintInvoiceSetting.footer_right }.to("abc")
     end
 
-    it 'sets preferred_anomaly_message to "abc"' do
-      put :update, params: {print_invoice_setting: {preferred_anomaly_message: "abc"}}
-      expect(subject.preferred_anomaly_message).to eq("abc")
+    it "can set preferred_anomaly_message" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_anomaly_message: "abc"}}
+      }.to change { Spree::PrintInvoiceSetting.anomaly_message }.to("abc")
     end
 
-    it "sets preferred_use_footer to true" do
-      put :update, params: {print_invoice_setting: {preferred_use_footer: true}}
-      expect(subject.preferred_use_footer).to be(true)
+    it "can set preferred_use_footer" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_use_footer: true}}
+      }.to change { Spree::PrintInvoiceSetting.use_footer }.to(true)
     end
 
-    it "sets preferred_use_page_numbers to true" do
-      put :update, params: {print_invoice_setting: {preferred_use_page_numbers: true}}
-      expect(subject.preferred_use_page_numbers).to be(true)
+    it "can set preferred_use_page_numbers" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_use_page_numbers: true}}
+      }.to change { Spree::PrintInvoiceSetting.use_page_numbers }.to(true)
     end
 
-    it "sets preferred_logo_scale to 80" do
-      put :update, params: {print_invoice_setting: {preferred_logo_scale: 80}}
-      expect(subject.preferred_logo_scale).to be(80)
+    it "can set preferred_logo_scale" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_logo_scale: 80}}
+      }.to change { Spree::PrintInvoiceSetting.logo_scale }.to(80)
     end
 
-    it 'sets preferred_font_face to "Arial"' do
-      put :update, params: {print_invoice_setting: {preferred_font_face: "Arial"}}
-      expect(subject.preferred_font_face).to eq("Arial")
+    it "can set preferred_font_face" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_font_face: "Arial"}}
+      }.to change { Spree::PrintInvoiceSetting.font_face }.to("Arial")
     end
 
-    it "sets preferred_font_size to 12" do
-      put :update, params: {print_invoice_setting: {preferred_font_size: 12}}
-      expect(subject.preferred_font_size).to be(12)
+    it "can set preferred_font_size" do
+      expect {
+        put :update, params: {print_invoice_setting: {preferred_font_size: 12}}
+      }.to change { Spree::PrintInvoiceSetting.font_size }.to(12)
     end
   end
 
