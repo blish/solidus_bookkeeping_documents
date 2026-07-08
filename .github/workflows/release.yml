@@ -10,6 +10,10 @@ on:
 
 jobs:
   publish:
+    # GITHUB_TOKEN needs packages: write to push to GitHub Packages, and a
+    # reusable workflow cannot request more than the caller grants.
+    permissions:
+      packages: write
     if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/v'))
     uses: blish/ops/.github/workflows/release.yml@main
     with:
