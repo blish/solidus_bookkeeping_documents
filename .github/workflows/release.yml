@@ -11,7 +11,7 @@ on:
 jobs:
   publish:
     if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/v'))
-    uses: blish/ops/.github/workflows/release.yml@main
+    uses: blish/ops/.github/workflows/release.yml@test-app-token-push
     with:
       version_file_path: lib/solidus_bookkeeping_documents/version.rb
       target_branch: ${{ github.event.pull_request.base.ref || github.ref_name }}
