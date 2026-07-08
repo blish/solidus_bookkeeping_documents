@@ -1,4 +1,15 @@
-# Change Log
+# Changelog
+
+## 5.2.0 (2026-07-08)
+
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### Features
+* feat: Bump allowed Ruby version to 4.0 by @tvdeyen in https://github.com/blish/solidus_bookkeeping_documents/pull/23
+
+
+**Full Changelog**: https://github.com/blish/solidus_bookkeeping_documents/compare/v5.1.1...v5.2.0
 
 ## v5.1.1 (2026-05-26)
 
