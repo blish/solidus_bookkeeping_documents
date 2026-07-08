@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version = SolidusBookkeepingDocuments::VERSION
   s.summary = "Print invoices and packing slips from Solidus Orders"
   s.description = s.summary
-  s.required_ruby_version = [">= 3.0", "< 4"]
+  s.required_ruby_version = [">= 3.4", "< 5"]
 
   s.authors = ["Thomas von Deyen", "Martin Meyerhoff"]
   s.email = "hello@blish.cloud"
