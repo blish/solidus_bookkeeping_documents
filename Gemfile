@@ -11,8 +11,6 @@ gem "sassc-rails", "~> 2.1"
 gem "selenium-webdriver", "~> 4.19"
 gem "state_machines", "< 0.10"
 
-source "https://rubygems.pkg.github.com/blish" do
-  gem "blish-support", require: false
 end
 
 group :test do
