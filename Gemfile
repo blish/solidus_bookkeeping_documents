@@ -11,8 +11,6 @@ gem "sassc-rails", "~> 2.1"
 gem "selenium-webdriver", "~> 4.19"
 gem "state_machines", "< 0.10"
 
-end
-
 group :test do
   gem "simplecov", "~> 0.10"
   gem "pdf-inspector", "~> 1.2"
