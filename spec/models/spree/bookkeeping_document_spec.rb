@@ -46,7 +46,7 @@ RSpec.describe Spree::BookkeepingDocument do
     subject(:document) { Spree::BookkeepingDocument.create(printable: printable, template: "invoice") }
 
     context "with an order" do
-      let(:printable) { create :invoiceable_order }
+      let(:printable) { create :invoiceable_order, :with_vat }
 
       it "creates a PDF" do
         expect(subject.pdf).to match(/%PDF-1.\d/)
@@ -56,6 +56,59 @@ RSpec.describe Spree::BookkeepingDocument do
         subject.pdf
         expect(document.attachment.name).to match("#{document.number}.pdf")
       end
+
+      it "has no embedded ZUGFeRD invoice" do
+        expect(embedded_files(subject.pdf)).to be_empty
+      end
+
+      context "with embed_zugferd_invoice enabled" do
+        before do
+          allow(Spree::PrintInvoiceSetting).to receive(:embed_zugferd_invoice) { true }
+        end
+
+        it "embeds the ZUGFeRD invoice" do
+          expect(embedded_files(subject.pdf)).to eq("factur-x.xml" => subject.xml)
+        end
+
+        it "does not embed it into the packaging slip" do
+          expect(embedded_files(printable.packaging_slip.pdf)).to be_empty
+        end
+
+        shared_examples "a PDF without ZUGFeRD invoice" do |error_class|
+          it "creates the PDF without ZUGFeRD invoice" do
+            expect(subject.pdf).to match(/%PDF-1.\d/)
+            expect(embedded_files(subject.pdf)).to be_empty
+          end
+
+          it "logs and reports the error" do
+            allow(Rails.logger).to receive(:error)
+            allow(Rails.error).to receive(:report)
+
+            subject.pdf
+
+            expect(Rails.logger).to have_received(:error).with(/ZUGFeRD invoice for #{subject.number} could not be generated/)
+            expect(Rails.error).to have_received(:report).with(
+              instance_of(error_class),
+              handled: true,
+              context: {bookkeeping_document: subject.number, order: printable.number}
+            )
+          end
+        end
+
+        context "when the ZUGFeRD invoice can't be generated" do
+          let(:printable) { create :invoiceable_order, :with_vat, seller_vat_id: nil }
+
+          it_behaves_like "a PDF without ZUGFeRD invoice", Spree::ZugferdInvoice::Error
+        end
+
+        context "when Ghostscript is missing" do
+          before do
+            allow_any_instance_of(Zugpferd::PDF::Embedder).to receive(:embed).and_raise(Zugpferd::PDF::Embedder::GhostscriptNotFound)
+          end
+
+          it_behaves_like "a PDF without ZUGFeRD invoice", Zugpferd::PDF::Embedder::GhostscriptNotFound
+        end
+      end
     end
 
     context "with an invalid order" do
@@ -63,6 +116,36 @@ RSpec.describe Spree::BookkeepingDocument do
 
       it "raises error" do
         expect { subject.pdf }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
+  end
+
+  describe "#xml" do
+    let(:order) { create :invoiceable_order, :with_vat }
+
+    context "with an invoice" do
+      subject(:xml) { Nokogiri::XML(order.invoice.xml) }
+
+      let(:ns) { Zugpferd::CII::Mapping::NS }
+
+      it "returns a CII invoice" do
+        expect(xml.root.name).to eq("CrossIndustryInvoice")
+        expect(xml.root.namespace.href).to eq(ns["rsm"])
+      end
+
+      it "contains the document number" do
+        expect(xml.at_xpath("//rsm:ExchangedDocument/ram:ID", ns).text).to eq(order.invoice.number)
+      end
+
+      it "contains the payable amount" do
+        amount = xml.at_xpath("//ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:DuePayableAmount", ns)
+        expect(BigDecimal(amount.text)).to eq(order.total)
+      end
+    end
+
+    context "with a packaging slip" do
+      it "raises an error" do
+        expect { order.packaging_slip.xml }.to raise_error(Spree::ZugferdInvoice::Error)
       end
     end
   end
