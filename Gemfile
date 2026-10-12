@@ -11,6 +11,12 @@ gem "sassc-rails", "~> 2.1"
 gem "selenium-webdriver", "~> 4.19"
 gem "state_machines", "< 0.10"
 
+group :development do
+  gem "ruby-lsp", require: false
+  gem "ruby-lsp-rails", require: false
+  gem "ruby-lsp-rspec", require: false
+end
+
 group :test do
   gem "simplecov", "~> 0.10"
   gem "pdf-inspector", "~> 1.2"
