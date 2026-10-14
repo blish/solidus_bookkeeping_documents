@@ -27,9 +27,10 @@ Gem::Specification.new do |s|
   s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec/|bin}) }
 
   s.add_runtime_dependency "prawn-rails", "~> 1.0"
+  s.add_runtime_dependency "zugpferd", ["~> 0.3", ">= 0.3.4"]
   s.add_runtime_dependency "deface", "~> 1.0"
   s.add_runtime_dependency "dragonfly", "~> 1.0"
-  s.add_runtime_dependency "solidus_core", [">= 4.6.2", "< 5"]
-  s.add_runtime_dependency "solidus_backend", [">= 4.6.2", "< 5"]
+  s.add_runtime_dependency "solidus_core", [">= 4.8.0", "< 5"]
+  s.add_runtime_dependency "solidus_backend", [">= 4.8.0", "< 5"]
   s.add_runtime_dependency "solidus_support", [">= 0.14.1", "< 1"]
 end

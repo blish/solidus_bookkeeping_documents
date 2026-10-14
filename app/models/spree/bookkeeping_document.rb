@@ -81,6 +81,13 @@ module Spree
       send_or_create_pdf!
     end
 
+    # Returns the document as EN 16931 CII XML (ZUGFeRD / Factur-X).
+    # @return [String]
+    # @raise [Spree::ZugferdInvoice::Error] if no e-invoice can be generated for the document
+    def xml
+      zugferd_invoice.generate
+    end
+
     # = The PDF file_name
     #
     def file_name
@@ -177,13 +184,31 @@ module Spree
       @_single_lower_class_name ||= class_string.demodulize.tableize.singularize
     end
 
+    def zugferd_invoice
+      @_zugferd_invoice ||= Spree::ZugferdInvoice.new(self)
+    end
+
+    # Embeds the e-invoice XML into the PDF. Falls back to the PDF without it, if the e-invoice can't be
+    # generated or Ghostscript fails. The error is logged and reported to the Rails error reporter.
+    #
+    # @param pdf [String] PDF binary
+    # @return [String] the PDF, with the embedded XML if possible
+    def embed_zugferd_invoice(pdf)
+      zugferd_invoice.embed(pdf)
+    rescue Spree::ZugferdInvoice::Error, Zugpferd::Error => e
+      Rails.logger.error("ZUGFeRD invoice for #{number} could not be generated: #{e.message}")
+      Rails.error.report(e, handled: true, context: {bookkeeping_document: number, order: printable.number})
+      pdf
+    end
+
     # Sends stored pdf for given template from disk.
     #
     # Renders and stores it if it's not yet present.
     #
     def send_or_create_pdf!
       unless attachment_stored?
-        self.attachment = render_pdf
+        embed_invoice = Spree::PrintInvoiceSetting.embed_zugferd_invoice && zugferd_invoice.supported?
+        self.attachment = embed_invoice ? embed_zugferd_invoice(render_pdf) : render_pdf
         attachment.name = file_name
         save!
       end

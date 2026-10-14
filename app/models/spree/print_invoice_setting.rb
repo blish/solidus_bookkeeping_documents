@@ -15,6 +15,7 @@ module Spree
     preference :logo_scale, :integer, default: -> { defaults[:logo_scale] }
     preference :font_face, :string, default: -> { defaults[:font_face] }
     preference :font_size, :integer, default: -> { defaults[:font_size] }
+    preference :embed_zugferd_invoice, :boolean, default: -> { defaults[:embed_zugferd_invoice] }
 
     preference :invoice_number_prefix, :string, default: -> { defaults[:invoice_number_prefix] }
     preference :packaging_slip_number_prefix, :string, default: -> { defaults[:packaging_slip_number_prefix] }

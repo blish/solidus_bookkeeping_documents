@@ -75,6 +75,7 @@ Rails.application.config.to_prepare do
     font_face: "Sans Serif",
     font_size: 9,
     invoice_number_prefix: "I-",
-    packaging_slip_number_prefix: "P-"
+    packaging_slip_number_prefix: "P-",
+    embed_zugferd_invoice: false
   }
 end
